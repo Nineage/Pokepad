@@ -1,9 +1,16 @@
 {
-  "name": "socket-chat-example",
-  "version": "0.0.1",
-  "description": "my first socket.io app",
+  "name": "Pokepad",
+  "version": "1.0.0",
+  "description": "A chat and collaborative teambuilder for competetive Pokemon.",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
+    "compression": "^1.6.2",
+    "ejs": "^2.5.2",
     "express": "4.10.2",
+    "helmet": "^3.1.0",
+    "shortid": "^2.2.6",
     "socket.io": "1.2.0"
   }
 }
