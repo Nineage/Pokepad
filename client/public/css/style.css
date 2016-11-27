@@ -35,8 +35,23 @@ form {
     margin-top: 2%;
 }
 
-#nav-line {
-    margin-top: 2.2%;
+#nav-line li {
+    display: block;
+    padding: 10px 15px;
+}
+
+.nav-tabs {
+    margin-bottom: 0;
+}
+
+.nav li a {
+    padding: 5px 10px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+#nav-line li {
+    font-size: 1.1em;
 }
 
 .modal-body textarea {
@@ -110,8 +125,8 @@ form {
     padding: 5px 10px;
     padding-left: 1px;
     word-wrap: break-word;
-    text-indent: 10px;
-    margin-left: -10px;
+    text-indent: 1px;
+    margin-left: 1px;
 }
 
 #messages li img {
@@ -148,15 +163,6 @@ form {
     height: 0.2px;
     width: 55px;
     margin-top: 1.3%;
-}
-
-.nav-tabs {
-    margin-bottom: 0;
-}
-
-.nav li a {
-    padding: 5px 10px;
-    margin-top: 5px;
 }
 
 .form-control {
