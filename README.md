@@ -1,4 +1,5 @@
 # Pokepad 
+https://poke-pad.herokuapp.com/
 
 A chat and collaborative teambuilder for competetive Pokemon.
 
