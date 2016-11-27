@@ -1,4 +1,4 @@
-# CleanRMT 
+# Pokepad 
 
 A chat and collaborative teambuilder for competetive Pokemon.
 
