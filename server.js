@@ -53,12 +53,27 @@ const parseName = function (name) {
 	return cleanName;
 };
 
+const removeNick = function (line) {
+	let cleanline = line;
+	if (~line.indexOf(' (M)')) {
+		cleanline = line.substr(0, line.indexOf('(M')).trim();
+	} else if (~line.indexOf(' (F)')) {
+		cleanline = line.substr(0, line.indexOf('(F')).trim();
+	}
+	if (~cleanline.indexOf('(')) {
+		//Worst code in this whole project I swear
+		cleanline = cleanline.substr(cleanline.indexOf('(') + 1);
+		cleanline = cleanline.substr(0, cleanline.length - 1);
+	}
+	return cleanline;
+};
+
 const packSet = function (moveset) {
 	if (!moveset) return;
 	let data = moveset.split('\n');
 	if (!data.length) return;
 	let pokeItem = data[0].split(' @ ');
-	let pokemon = pokeItem[0].trim();
+	let pokemon = removeNick(pokeItem[0].trim());
 	let item;
 	if (pokeItem[1]) item = pokeItem[1].trim();
 	if (!~pokenames.indexOf(pokemon) || (item && !~items.indexOf(item))) return;

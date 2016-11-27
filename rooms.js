@@ -90,7 +90,6 @@ const Rooms = module.exports = {
             rdata.moves[index][i] = data.moves[i] || "";
         }
         for (let k in data.evs) {
-            console.log(rdata.evs[index][newEv[k]], data.evs[k])
             rdata.evs[index][newEv[k]] = data.evs[k];
         }
         for (let j in data.ivs) {
