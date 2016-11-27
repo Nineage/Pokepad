@@ -2,6 +2,9 @@
   "name": "Pokepad",
   "version": "1.0.0",
   "description": "A chat and collaborative teambuilder for competetive Pokemon.",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "start": "node server.js"
   },
@@ -12,5 +15,6 @@
     "helmet": "^3.1.0",
     "shortid": "^2.2.6",
     "socket.io": "1.2.0"
-  }
+  },
+  "license": "MIT",
 }
