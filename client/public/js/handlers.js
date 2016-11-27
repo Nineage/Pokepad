@@ -1,111 +1,124 @@
 'use strict';
+/**
+ * Handlers
+ * https://github.com/nineage/pokepad
+ * @license MIT license
+ */
 
+/**
+ * changeTab
+ * Changes the current active title.
+ * @param {String} tab
+ * @param {String} curPanel
+ */
 function changeTab(tab, curPanel) {
-        if (tab === 'toggle-general-' + curPanel) {
+    if (tab === 'toggle-general-' + curPanel) {
         tab = '#' + tab + '-li';
         $(tab).addClass('active');
-        
+
         var show = '#mon-' + curPanel + '-general';
         $(show).removeClass('hidden-button');
-        
+
         var moves = '#toggle-moves-' + curPanel + '-li';
         $(moves).removeClass('active');
-    
+
         var evs = '#toggle-evs-' + curPanel + '-li';
         $(evs).removeClass('active');
-        
+
         var impor = '#toggle-import-' + curPanel + '-li';
         $(impor).removeClass('active');
-        
+
         var hide1 = '#mon-' + curPanel + '-moves';
         $(hide1).addClass('hidden-button');
-        
+
         var hide2 = '#mon-' + curPanel + '-evs';
         $(hide2).addClass('hidden-button');
-        
+
         var hide3 = '#mon-' + curPanel + '-import';
         $(hide3).addClass('hidden-button');
-        
+
     } else if (tab === 'toggle-moves-' + curPanel) {
         tab = '#' + tab + '-li';
         $(tab).addClass('active');
-        
+
         var show = '#mon-' + curPanel + '-moves';
         $(show).removeClass('hidden-button');
-        
+
         var general = '#toggle-general-' + curPanel + '-li';
         $(general).removeClass('active');
-        
+
         var evs = '#toggle-evs-' + curPanel + '-li';
         $(evs).removeClass('active');
-        
+
         var impor = '#toggle-import-' + curPanel + '-li';
         $(impor).removeClass('active');
-        
+
         var hide1 = '#mon-' + curPanel + '-general';
         $(hide1).addClass('hidden-button');
-        
+
         var hide2 = '#mon-' + curPanel + '-evs';
         $(hide2).addClass('hidden-button');
-        
+
         var hide3 = '#mon-' + curPanel + '-import';
         $(hide3).addClass('hidden-button');
-        
+
     } else if (tab === 'toggle-evs-' + curPanel) {
         tab = '#' + tab + '-li';
         $(tab).addClass('active');
-        
+
         var show = '#mon-' + curPanel + '-evs';
         $(show).removeClass('hidden-button');
-        
+
         var general = '#toggle-general-' + curPanel + '-li';
         $(general).removeClass('active');
-        
+
         var moves = '#toggle-moves-' + curPanel + '-li';
         $(moves).removeClass('active');
-        
+
         var impor = '#toggle-import-' + curPanel + '-li';
         $(impor).removeClass('active');
-        
+
         var hide1 = '#mon-' + curPanel + '-general';
         $(hide1).addClass('hidden-button');
-        
+
         var hide2 = '#mon-' + curPanel + '-moves';
         $(hide2).addClass('hidden-button');
-        
+
         var hide3 = '#mon-' + curPanel + '-import';
         $(hide3).addClass('hidden-button');
-        
+
     } else {
         tab = '#' + tab + '-li';
         $(tab).addClass('active');
-        
+
         var show = '#mon-' + curPanel + '-import';
         $(show).removeClass('hidden-button');
-        
+
         var general = '#toggle-general-' + curPanel + '-li';
         $(general).removeClass('active');
-        
+
         var moves = '#toggle-moves-' + curPanel + '-li';
-        $(moves).removeClass('active'); 
-        
+        $(moves).removeClass('active');
+
         var evs = '#toggle-evs-' + curPanel + '-li';
         $(evs).removeClass('active');
-        
+
         var hide1 = '#mon-' + curPanel + '-general';
         $(hide1).addClass('hidden-button');
-        
+
         var hide2 = '#mon-' + curPanel + '-moves';
         $(hide2).addClass('hidden-button');
-        
+
         var hide3 = '#mon-' + curPanel + '-evs';
         $(hide3).addClass('hidden-button');
     }
 }
-
+/**
+ * Jquery event handlers
+ */
 $(window).load(function() {
-		$(".se-pre-con").fadeOut("slow");;
-	});
+    $(".se-pre-con").fadeOut("slow");;
+});
 
 $('#chat').submit(() => {
     socket.emit('chat message', $('#m').val());
@@ -153,7 +166,7 @@ $('.dropdown-toggle').click((e) => {
     }
 });
 
-$(document).on('click', '.dropdown-item', function(e) { 
+$(document).on('click', '.dropdown-item', function(e) {
     var target = '#' + e.target.id;
     var moveset = $(target).text();
     var pokeno = Number(target.charAt(target.length - 1));
@@ -164,7 +177,9 @@ $(document).on('click', '.dropdown-item', function(e) {
     $(dropdown).addClass('hidden-button');
 });
 
-//And all of the pokemon changes
+/**
+ * Pokemon Changes
+ */
 
 $('.pokemon').change((e) => {
     let pokeno = Number(e.target.id[14]);
@@ -202,7 +217,7 @@ $('.shiny').change((e) => {
 $('.ev').change((e) => {
     let id = e.target.id;
     let pokeno = Number(id[id.length - 1]); //lol
-    let stat = id.substr(0,id.indexOf('-'));
+    let stat = id.substr(0, id.indexOf('-'));
     socket.emit('ev selected', pokeno, stat, e.target.value);
 });
 
@@ -214,7 +229,7 @@ $('.nature').change((e) => {
 $('.iv').change((e) => {
     let id = e.target.id;
     let pokeno = Number(id[id.length - 1]); //lol
-    let stat = id.substr(0,id.indexOf('-'));
+    let stat = id.substr(0, id.indexOf('-'));
     console.log(pokeno, stat);
     socket.emit('iv selected', pokeno, stat, e.target.value);
 });

@@ -1,183 +1,195 @@
- body {
-     margin: 0;
-     padding: 0;
-     font: 13px Helvetica, Arial;
- }
- 
- form {
-     padding-bottom: 3px;
-     bottom: 0;
- }
- 
- .container {
-     min-height: 100%;
-     height: 100%;
- }
- 
- .navbar-header {
-     width: 12%;
- }
- 
- #export-btn {
-     float: right;
-     margin-top: 1%;
- }
- 
- #logo {
-     float: left;
-     margin-right: 2%;
-     margin-top: 2%;
- }
- 
- #nav-line  {
-     margin-top: 2.2%;
- }
- 
- .modal-body textarea {
-     margin-left: 33%;
-     margin-right: 33%;
-     overflow: auto;
- }
- 
- .hidden-button {
-     display: none;
- }
- 
- .navbar-default {
-     margin-bottom: 0.5%;
- }
- 
- .add-margin {
-  margin-bottom: 10px;
- }
- 
- #chat-area {
-     padding: 0;
- }
- 
- #panel {
-     height: 100%;
- }
- 
- .panel-body {
-     padding-bottom: 1%;
- }
- 
- .panel-primary {
-     margin-bottom: 0.5%;
- }
- 
- .panel-image {
-     position: absolute;
-     right: 10%;
-     top: 0%;
- }
- 
- #upper-row {
-     margin-bottom: 0.5%;
- }
- 
- .panel-heading {
-     padding-bottom: 0%;
-     padding-top: 10%;
-     background-color: #158cba;
-     color: #fff;
- }
- 
- #messages {
-     list-style-type: none;
-     margin: 0;
-     padding: 0;
-     overflow: auto;
-     height: 300px;
-     max-height: 300px;
- }
- 
- #messages li:nth-child(odd) {
-     background: #eee;
- }
- 
- #messages li {
-     padding: 5px 10px;
-     padding-left: 1px;
-     word-wrap: break-word;
-     /*text-indent: 10px;
-     margin-left: -10px;*/
- }
- 
- #messages li img {
-     margin-top: -10px;
-     height: 50%;
-     width: auto;
- }
- 
- #messages li.server {
-  font-style: italic;
-  padding-right: 10px;
- }
- 
- #pokemon {
-     height: 300px;
-     max-height: 300px;
-     overflow: auto;
- }
- 
- .ev {
-     height: 0.5px;
-     width: 95px;
- }
- 
- .ev-main-menu {
-     padding-left: 0;
-     padding-right: 0;
- }
- 
- .iv {
-     height: 0.2px;
-     width: 55px;
-     margin-top: 1.3%;
- }
- 
+/************************/
+/* Main Style
+/************************/
+body {
+    margin: 0;
+    padding: 0;
+    font: 13px Helvetica, Arial;
+}
+
+form {
+    padding-bottom: 3px;
+    bottom: 0;
+}
+
+.container {
+    min-height: 100%;
+    height: 100%;
+}
+
+/************************/
+/* Header Style
+/************************/
+.navbar-header {
+    width: 12%;
+}
+
+#export-btn {
+    float: right;
+    margin-top: 1%;
+}
+
+#logo {
+    float: left;
+    margin-right: 2%;
+    margin-top: 2%;
+}
+
+#nav-line {
+    margin-top: 2.2%;
+}
+
+.modal-body textarea {
+    margin-left: 33%;
+    margin-right: 33%;
+    overflow: auto;
+}
+
+.hidden-button {
+    display: none;
+}
+
+.navbar-default {
+    margin-bottom: 0.5%;
+}
+
+.add-margin {
+    margin-bottom: 10px;
+}
+
+#chat-area {
+    padding: 0;
+}
+
+#panel {
+    height: 100%;
+}
+
+.panel-body {
+    padding-bottom: 1%;
+}
+
+.panel-primary {
+    margin-bottom: 0.5%;
+}
+
+.panel-image {
+    position: absolute;
+    right: 10%;
+    top: 0%;
+}
+
+#upper-row {
+    margin-bottom: 0.5%;
+}
+
+.panel-heading {
+    padding-bottom: 0%;
+    padding-top: 10%;
+    background-color: #158cba;
+    color: #fff;
+}
+
+/************************/
+/* Messages Style
+/************************/
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 300px;
+    max-height: 300px;
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
+
+#messages li {
+    padding: 5px 10px;
+    padding-left: 1px;
+    word-wrap: break-word;
+    text-indent: 10px;
+    margin-left: -10px;
+}
+
+#messages li img {
+    margin-top: -10px;
+    height: 50%;
+    width: auto;
+}
+
+#messages li.server {
+    font-style: italic;
+    padding-right: 10px;
+}
+
+#pokemon {
+    height: 300px;
+    max-height: 300px;
+    overflow: auto;
+}
+
+/************************/
+/* Editor Style
+/************************/
+.ev {
+    height: 0.5px;
+    width: 95px;
+}
+
+.ev-main-menu {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.iv {
+    height: 0.2px;
+    width: 55px;
+    margin-top: 1.3%;
+}
+
 .nav-tabs {
-     margin-bottom: 0;
- }
- 
+    margin-bottom: 0;
+}
+
 .nav li a {
-     padding: 5px 10px;
-     margin-top: 5px;
- }
- 
- .form-control {
-     height: 30px;
- }
- 
- .toggle-panel-item {
-     width: 24%;
- }
- 
- .panel-tab-item {
-     text-align: center;
- }
- 
- .dropdown-toggle {
-     padding: 0.5%;
-     margin-top: 1.5%;
-     margin-left: 68%;
-     margin-right: 22%;
- }
- 
- .smogset-menu {
-     z-index: 9999;
-     position: absolute;
-     left: 114px;
-     background-color: #fff;
-     list-style: none;
-     border: 1px solid rgba(0,0,0,.15);
-     border-radius: .25rem;
-     padding: 1%;
- }
- 
- .dropdown-item {
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.form-control {
+    height: 30px;
+}
+
+.toggle-panel-item {
+    width: 24%;
+}
+
+.panel-tab-item {
+    text-align: center;
+}
+
+.dropdown-toggle {
+    padding: 0.5%;
+    margin-top: 1.5%;
+    margin-left: 68%;
+    margin-right: 22%;
+}
+
+.smogset-menu {
+    z-index: 9999;
+    position: absolute;
+    left: 114px;
+    background-color: #fff;
+    list-style: none;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: .25rem;
+    padding: 1%;
+}
+
+.dropdown-item {
     display: block;
     width: 100%;
     padding: 3px 1.5px;
@@ -188,117 +200,129 @@
     white-space: nowrap;
     background: 0 0;
     border: 0;
- }
- 
-.dropdown-item:focus, 
-.dropdown-item:hover {
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
     color: #2b2d2f;
     text-decoration: none;
     background-color: #e8e8e8;
 }
- 
- .move {
-     margin-bottom: 3%;
- }
- 
- .inline-label {
-     display: block;
-     width: 40%;
-     height: 5%;
-     margin-top: 3%;
-     float: left;
- }
- 
- .pokemon, .level, .ability, .item {
-     width: 55%;
-     margin-top: 0.8%;
-     margin-bottom: 0.9%;
- }
- 
- .nature {
-     width: 55%;
-     margin-top: 0.5%;
- }
- 
- .level {
-     width: 25%;
- }
- 
- .shiny-space {
-     position: relative;
- }
- 
- .shiny-button-area {
-     float: right;
-     position: absolute;
-     right: 20px;
-     top: 1px;
- }
- 
-.no-js #loader { display: none;  }
-.js #loader { display: block; position: absolute; left: 100px; top: 0; }
-.se-pre-con {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url(/images/pokeball.gif) center no-repeat #fff;
+
+.move {
+    margin-bottom: 3%;
 }
 
- /************************/
- /* Media Queries 
+.inline-label {
+    display: block;
+    width: 40%;
+    height: 5%;
+    margin-top: 3%;
+    float: left;
+}
+
+.pokemon, .level, .ability, .item {
+    width: 55%;
+    margin-top: 0.8%;
+    margin-bottom: 0.9%;
+}
+
+.nature {
+    width: 55%;
+    margin-top: 0.5%;
+}
+
+.level {
+    width: 25%;
+}
+
+.shiny-space {
+    position: relative;
+}
+
+.shiny-button-area {
+    float: right;
+    position: absolute;
+    right: 20px;
+    top: 1px;
+}
+
 /************************/
- 
- @media (min-width: 992px) and (max-width: 1591px) {
-     .col-md-9 {
-         padding-right: 1px;
-     }
-     .col-md-4 {
-         width: 33%;
-         padding-left: 0%;
-         padding-right: 1%;
-     }
-     .panel-tab-item {
-         position: absolute;
-         right: 3px;
-     }
-     .import {
-         margin-left: 150px;
-     }
-     #import-area-6, #import-area-5, #import-area-4, #import-area-3, #import-area-2, #import-area-1 {
-         position: relative;
-         padding-right: 1px;
-     }
-     .level {
-         width: 59px;
-     }
-     .shiny-button-area {
-         right: 3px;
-     }
- }
- 
- @media (min-width: 539px) and (max-width: 991px) {
-	.form-control {
-      width: 25%;                                   
-    }           
-    
+/* Loading Style
+/************************/
+.no-js #loader {
+    display: none;
+}
+
+.js #loader {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top: 0;
+}
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/images/pokeball.gif) center no-repeat #fff;
+}
+
+
+/************************/
+/* Media Queries
+/************************/
+
+@media (min-width: 992px) and (max-width: 1591px) {
+    .col-md-9 {
+        padding-right: 1px;
+    }
+    .col-md-4 {
+        width: 33%;
+        padding-left: 0%;
+        padding-right: 1%;
+    }
+    .panel-tab-item {
+        position: absolute;
+        right: 3px;
+    }
+    .import {
+        margin-left: 150px;
+    }
+    #import-area-6, #import-area-5, #import-area-4, #import-area-3, #import-area-2, #import-area-1 {
+        position: relative;
+        padding-right: 1px;
+    }
+    .level {
+        width: 59px;
+    }
+    .shiny-button-area {
+        right: 3px;
+    }
+}
+
+@media (min-width: 539px) and (max-width: 991px) {
+    .form-control {
+        width: 25%;
+    }
     .inline-label {
-      display: block;
-      width: 40%;
-      height: 5%;
-      margin-top: 3%;
-      float: none;
-     }
- }
+        display: block;
+        width: 40%;
+        height: 5%;
+        margin-top: 3%;
+        float: none;
+    }
+}
 
 
 /************************/
-/* Sprite Sheet 
+/* Sprite Sheet
 /************************/
+
 .art {
-    background-image:url('../images/art.png');
+    background-image: url('../images/art.png');
 }
 
 .art.bulbasaur{background-position:-96px 0}

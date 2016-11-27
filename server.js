@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * server
+ * https://github.com/nineage/pokepad
+ * @license MIT license
+ */
 
 const express = require('express');
 const app = express();
@@ -37,15 +42,30 @@ const oldEv = {
 	'spe': 'sp'
 };
 
+/**
+ * escapeHTML
+ * Prevents input from being parsed as HTML.
+ * @param {String} str
+ */
 const escapeHTML = function (str) {
 	if (!str) return '';
 	return ('' + str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;').replace(/\//g, '&#x2f;');
 };
 
+/**
+ * position
+ * Returns the move position.
+ * @param {Int} moveno
+ */
 const position = function (moveno) {
 	return ["first", "second", "third", "fourth"][moveno - 1];
 };
 
+/**
+ * parseName
+ * Cleans up usernames and checks for validity.
+ * @param {String} name
+ */
 const parseName = function (name) {
 	let cleanName = escapeHTML(name).trim();
 	if (!cleanName || cleanName.length < 1) return("Pikachu");
@@ -53,6 +73,11 @@ const parseName = function (name) {
 	return cleanName;
 };
 
+/**
+ * removeNick
+ * Clears a nick name from the panel
+ * @param {String} line
+ */
 const removeNick = function (line) {
 	let cleanline = line;
 	if (~line.indexOf(' (M)')) {
@@ -68,6 +93,11 @@ const removeNick = function (line) {
 	return cleanline;
 };
 
+/**
+ * packSet
+ * Prepares a moveset for delivery to the user.
+ * @param {String} moveset
+ */
 const packSet = function (moveset) {
 	if (!moveset) return;
 	let data = moveset.split('\n');
@@ -115,7 +145,7 @@ const packSet = function (moveset) {
 		}
 		ivs= ivObj;
 	}
-	if (!ability || !~abilities.indexOf(ability) || !nature || 
+	if (!ability || !~abilities.indexOf(ability) || !nature ||
 		!natures[nature.toLowerCase()] || moves.length > 4) return;
 	let output = {"name": pokemon, "ability": ability, "nature": nature, "level": level, "moves": moves};
 	if (evs) output.evs = evs;
@@ -124,6 +154,9 @@ const packSet = function (moveset) {
 	return output;
 };
 
+/**
+ * Set up the server
+ */
 app.get('/', (req, res) => {
   res.render('index');
 });
@@ -138,9 +171,11 @@ app.get('/build/:id', (req,res) => {
 		res.render('builder');
 	}	else {
 		res.render('404');
-	} 
+	}
 });
-
+/**
+ * Socket events
+ */
 io.on('connection', (socket) => {
 	socket.pokemon = randPoke();
 	socket.name = 'Anonymous ' + socket.pokemon;
@@ -305,11 +340,14 @@ io.on('connection', (socket) => {
 	});
 	socket.on('disconnect', () => {
 		let msg = socket.name + ' has left.';
-  		io.sockets.in(socket.room).emit('server message', msg);
-  		Rooms.updateChat(socket.room, false, false, msg);
+		io.sockets.in(socket.room).emit('server message', msg);
+		Rooms.updateChat(socket.room, false, false, msg);
 	});
 });
 
+/**
+ * Finally run the server
+ */
 http.listen(port, () => {
-  console.log('Application started at http://localhost:' + port);
+    console.log('Application started at http://localhost:' + port);
 });

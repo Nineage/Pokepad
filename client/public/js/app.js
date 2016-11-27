@@ -1,36 +1,50 @@
 "use strict";
-
+/**
+ * app
+ * https://github.com/nineage/pokepad
+ * @license MIT license
+ */
 const socket = io();
-
 const hpArr = ["Hidden Power Fire", "Hidden Power Water", "Hidden Power Grass", "Hidden Power Electric", "Hidden Power Fighting", "Hidden Power Flying", "Hidden Power Fairy", "Hidden Power Ice", "Hidden Power Poison", "Hidden Power Ghost", "Hidden Power Psychic", "Hidden Power Dark", "Hidden Power Steel", "Hidden Power Rock", "Hidden Power Ground", "Hidden Power Bug", "Hidden Power Dragon"];
 
-const toId = function (text) { //I love Zarel
-	if (text && text.id) {
-		text = text.id;
-	} else if (text && text.userid) {
-		text = text.userid;
-	}
-	if (typeof text !== 'string' && typeof text !== 'number') return '';
+/**
+ * toId
+ * Converts a string to an alphanumerical ID.
+ * @param {String} text
+ */
+const toId = function(text) { //I love Zarel
+    if (text && text.id) {
+        text = text.id;
+    } else if (text && text.userid) {
+        text = text.userid;
+    }
+    if (typeof text !== 'string' && typeof text !== 'number') return '';
     return ('' + text).toLowerCase().replace(/[^a-z0-9]+/g, '');
 };
 
 const newEv = {
-	'hp': 'hp',
-	'at': 'atk',
-	'df': 'def',
-	'sa': 'spa',
-	'sd': 'spd',
-	'sp': 'spe'
+    'hp': 'hp',
+    'at': 'atk',
+    'df': 'def',
+    'sa': 'spa',
+    'sd': 'spd',
+    'sp': 'spe'
 };
 
-const setPokemon = function (pokeno, pokemon, server) {
-    //This gets to be its own function because its more complicated
+/**
+ * setPokemon
+ * Sets a pokemon to a panel and updates the panel
+ * @param {Int} pokeno
+ * @param {String} pokemon
+ * @param {Object} server
+ */
+const setPokemon = function(pokeno, pokemon, server) {
     let pokevar = '#pokemon-input-' + pokeno;
     let panel = '#panel-title-' + pokeno;
     let img = '#panel-image-' + pokeno;
     let oldMon = $(panel).text();
     $(pokevar).val(pokemon);
-            
+
     //First lets clear everything
     $(img).removeClass(oldMon.toLowerCase())
     $('#item-input-' + pokeno).val("");
@@ -45,7 +59,6 @@ const setPokemon = function (pokeno, pokemon, server) {
         $('#' + stat + '-input-' + pokeno).val(0);
         $('#' + stat + '-iv-input-' + pokeno).val(31);
     }
-    
     //Now we propagate
     $(panel).text(pokemon);
     $(img).addClass(pokemon.toLowerCase())
@@ -55,7 +68,9 @@ const setPokemon = function (pokeno, pokemon, server) {
         data.push(pokeData.abilities[i]);
     }
     $('#ability-input-' + pokeno).typeahead('destroy');
-    $('#ability-input-' + pokeno).typeahead({ source:data });
+    $('#ability-input-' + pokeno).typeahead({
+        source: data
+    });
     $('#ability-input-' + pokeno).val(pokeData.abilities[0]);
     if (!server) socket.emit('ability selected', pokeno, pokeData.abilities[0], true);
     data = learnsets[0][toId(pokemon)];
@@ -63,7 +78,9 @@ const setPokemon = function (pokeno, pokemon, server) {
     let moveVar = '#move-input-' + pokeno;
     for (let j = 1; j < 5; j++) {
         $(moveVar + '-' + j).typeahead('destroy');
-        $(moveVar + '-' + j).typeahead({ source:data });
+        $(moveVar + '-' + j).typeahead({
+            source: data
+        });
     }
     $('#moveset-input-' + pokeno).empty();
     for (let i in movesets[0][pokemon]) {
@@ -71,31 +88,45 @@ const setPokemon = function (pokeno, pokemon, server) {
     }
 };
 
+/**
+ * Jquery event handlers
+ */
 $(document).ready(() => {
     let data = [];
     for (let i in pokedex[0]) {
         data.push(pokedex[0][i].species);
     }
-    $(".pokemon").typeahead({ source:data });
+    $(".pokemon").typeahead({
+        source: data
+    });
     data = [];
     for (let i in items[0]) {
         data.push(items[0][i].name);
     }
-    $('.item').typeahead({ source:data });
+    $('.item').typeahead({
+        source: data
+    });
     data = [];
     /*for (let i in moves[0]) {
         data.push(moves[0][i].name);
     }*/
-    $('.move').typeahead({ source: data });
+    $('.move').typeahead({
+        source: data
+    });
     data = [];
     for (let i in natures[0]) {
         data.push(natures[0][i].name);
     }
-    $('.nature').typeahead({ source: data });
-    
+    $('.nature').typeahead({
+        source: data
+    });
+
     socket.emit('send team', 'load data');
 });
 
+/**
+ * Socket events
+ */
 socket.on('connect', () => {
     socket.emit('load', window.location.pathname.substr(7));
 });
@@ -108,17 +139,17 @@ socket.on('load chat', messages => {
             $('#messages').append('<li class="server">' + messages[i][2] + '</li>');
         }
     }
-    $('#messages').scrollTop(10 * 40^100000000000);
+    $('#messages').scrollTop(10 * 40 ^ 100000000000);
 });
 
 socket.on('chat message', (by, poke, msg) => {
     $('#messages').append('<li><img src="' + poke + '" /><b> ' + by + ':</b><span class="inline-message"> ' + msg + '</span></li>');
-    $('#messages').scrollTop(10 * 40^100000000000);
+    $('#messages').scrollTop(10 * 40 ^ 100000000000);
 });
 
 socket.on('server message', (message) => {
     $('#messages').append('<li class="server">' + message + '</li>');
-    $('#messages').scrollTop(10 * 40^100000000000);
+    $('#messages').scrollTop(10 * 40 ^ 100000000000);
 });
 
 socket.on('name change', () => {
@@ -144,7 +175,7 @@ socket.on('load data', data => {
         for (let l in data.ivs[i]) {
             $('#' + l + '-iv-input-' + pokeno).val(data.ivs[i][l]);
         }
-    } 
+    }
 });
 
 socket.on('build importable', data => {
@@ -181,34 +212,34 @@ socket.on('single change', (type, pokeno, change) => {
     switch (type) {
         case 'pokemon':
             setPokemon(pokeno, change);
-        break;
+            break;
         case 'item':
             $('#item-input-' + pokeno).val(change);
-        break;
+            break;
         case 'ability':
             $('#ability-input-' + pokeno).val(change);
-        break;
+            break;
         case 'level':
             $('#level-input-' + pokeno).val(change);
-        break;
+            break;
         case 'shiny':
             $('#shiny-input-' + pokeno).prop("checked", change);
-        break;
+            break;
         case 'move':
             $('#move-input-' + pokeno).val(change);
-        break;
+            break;
         case 'nature':
             $('#nature-input-' + pokeno).val(change);
-        break;
+            break;
         case 'ev':
             $('#' + pokeno).val(change);
-        break;
+            break;
         case 'iv':
             $('#' + pokeno).val(change);
-        break;
+            break;
         default:
             alert("An error has ocurred. Please report this in the smogon thread.");
-        break;
+            break;
     }
 });
 

@@ -1,4 +1,9 @@
 "use strict";
+/**
+ * rooms
+ * https://github.com/nineage/pokepad
+ * @license MIT license
+ */
 
 const shortid = require("shortid");
 
@@ -11,6 +16,10 @@ const newEv = {
 	'sp': 'spe'
 };
 
+/**
+ * Rooms
+ * Generates the room object.
+ */
 const Rooms = module.exports = {
     rooms: {},
     create: function () {
@@ -25,11 +34,11 @@ const Rooms = module.exports = {
                 abilities: ["Levitate", "Levitate", "Levitate", "Levitate", "Levitate", "Levitate"],
                 levels: [100, 100, 100, 100, 100, 100],
                 moves: [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]],
-                evs: [{hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, 
+                evs: [{hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0},
                     {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}, {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0}],
-                ivs: [{hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, 
+                ivs: [{hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31},
                     {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}, {hp: 31, atk: 31, def: 31, spa: 31, spd: 31, spe: 31}],
-                natures: ["Serious", "Serious", "Serious", "Serious", "Serious", "Serious"],    
+                natures: ["Serious", "Serious", "Serious", "Serious", "Serious", "Serious"],
             },
             chat: [],
             lastUpdate: null, //avoids occasionally double submission
