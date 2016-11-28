@@ -113,9 +113,15 @@ function changeTab(tab, curPanel) {
         $(hide3).addClass('hidden-button');
     }
 }
+
 /**
  * Jquery event handlers
  */
+ 
+ $("input[type='text']").click(function () {
+   $(this).select();
+});
+
 $(window).load(function() {
     $(".se-pre-con").fadeOut("slow");;
 });
