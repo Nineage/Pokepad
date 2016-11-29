@@ -29,6 +29,12 @@ form {
     margin-top: 1%;
 }
 
+
+.default-level {
+    width: 32%;
+}
+
+
 #logo {
     float: left;
     margin-right: 2%;
@@ -226,6 +232,10 @@ form {
     float: left;
 }
 
+.inline-label-small {
+    width: 33%;
+}
+
 .pokemon, .level, .ability, .item {
     width: 55%;
     margin-top: 0.8%;
@@ -250,6 +260,12 @@ form {
     position: absolute;
     right: 20px;
     top: 1px;
+}
+
+#lower-options-area {
+    border: 1px solid #000;
+    padding: 0.8%;
+    border-radius: .35em;
 }
 
 /************************/

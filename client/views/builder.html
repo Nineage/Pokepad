@@ -16,8 +16,8 @@
                 <img src="/images/pokeball.png" id="logo" alt="An image of a pokeball" height="50" width="50">
                 <a class="navbar-brand" href="/">Pok&eacute;pad</a>
             </div>
-            <div>
-                <button type="button" id="export-btn" class="btn btn-sm" data-toggle="export-modal" data-target="#export">Export Team</button>
+            <div id="nav-left-items">
+                 <button type="button" id="export-btn" class="btn btn-sm" data-toggle="export-modal" data-target="#export">Export Team</button>
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav" id="nav-line">
@@ -26,6 +26,7 @@
                     <li><a href="#" target=_blank>Info</a></li>
                     <li><a href="https://github.com/Nineage/Pokepad" target=_blank>Github</a></li>
                     <li><a href="#" target=_blank>Credits</a></li>
+                    <li><a href="https://gonefroggin.com/" target=_blank>Frog Blog</a></li>
                 </ul>
             </div>
             <div>
@@ -577,6 +578,10 @@
                             <input type="text" class="form-control hidden-button" id="m" autocomplete="off" />
                         </form>
                     </div>
+                </div>
+                <div id="lower-options-area">
+                  <label for="default-level-input" class="inline-label inline-label-small">Default Level: </label>
+                  <input id="default-level-input" type="text" class=" form-control default-level" autocomplete="off" />
                 </div>
             </div>
         </div>

@@ -132,6 +132,10 @@ $('#chat').submit(() => {
     return false;
 });
 
+$('#default-level-input').change((e) => {
+    socket.emit('default level', e.target.value);
+})
+
 $('form.name').submit(() => {
     socket.emit('name chosen', $('#n').val());
     $('#n').val('');
@@ -158,8 +162,8 @@ $('.import').click((e) => {
     socket.emit('import moveset', pokeno, $(importArea).val());
     $(importArea).val("");
     let curTab = 'toggle-general-' + pokeno;
-    changeTab(curTab, pokeno)
-})
+    changeTab(curTab, pokeno);
+});
 
 $('.dropdown-toggle').click((e) => {
     var panel = e.target.id;
@@ -236,6 +240,5 @@ $('.iv').change((e) => {
     let id = e.target.id;
     let pokeno = Number(id[id.length - 1]); //lol
     let stat = id.substr(0, id.indexOf('-'));
-    console.log(pokeno, stat);
     socket.emit('iv selected', pokeno, stat, e.target.value);
 });

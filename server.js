@@ -207,6 +207,16 @@ io.on('connection', (socket) => {
 		io.sockets.in(socket.room).emit('server message', msg);
 		Rooms.updateChat(socket.room, false, false, msg);
 	});
+	socket.on('default level', (level) => {
+		let room = socket.room;
+		let n = Number(level);
+		if (isNaN(n) || n < 1 || n % 1 !== 0) return;
+		Rooms.setDefaultLevel(room, n);
+		io.sockets.in(room).emit('default level', n);
+		let msg = 'The default level has been changed to ' + n + ' by ' + socket.name;
+		io.sockets.in(room).emit('server message', msg);
+		Rooms.updateChat(room, null, null, msg);
+	});
 	socket.on('pokemon selected', (pokeno, pokemon) => {
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!~pokenames.indexOf(pokemon)) return;

@@ -28,6 +28,7 @@ const Rooms = module.exports = {
             id: id,
             users: [],
             team: {
+                defaultLevel: 100,
                 pokemon: ["Unown","Unown","Unown","Unown","Unown","Unown"],
                 shiny: [false, false, false, false, false, false],
                 items: ["","","","","",""],
@@ -56,12 +57,15 @@ const Rooms = module.exports = {
     loadChat: function (room) {
         if (Rooms.rooms[room]) return Rooms.rooms[room].chat;
     },
+    setDefaultLevel: function (room, level) {
+        if (Rooms.rooms[room]) Rooms.rooms[room].team.defaultLevel = level;
+    },
     clearPokemon: function (room, index) {
         index--;
         let rdata = Rooms.rooms[room].team;
         rdata.items[index] = "";
         rdata.shiny[index] = false;
-        rdata.levels[index] = 100;
+        rdata.levels[index] = rdata.defaultLevel;
         rdata.abilities[index] = "Serious";
         rdata.moves[index] = ["","","",""];
         rdata.evs[index] = {hp: 0, atk: 0, def: 0, spa: 0, spd: 0, spe: 0};

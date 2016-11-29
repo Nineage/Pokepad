@@ -31,6 +31,8 @@ const newEv = {
     'sp': 'spe'
 };
 
+let defaultLevel = 100; //storing here because its easy
+
 /**
  * setPokemon
  * Sets a pokemon to a panel and updates the panel
@@ -48,7 +50,7 @@ const setPokemon = function(pokeno, pokemon, server) {
     //First lets clear everything
     $(img).removeClass(oldMon.toLowerCase())
     $('#item-input-' + pokeno).val("");
-    $('#level-input-' + pokeno).val(100);
+    $('#level-input-' + pokeno).val(defaultLevel);
     $('#shiny-input-' + pokeno).prop("checked", false);
     $('#nature-input-' + pokeno).val("Serious");
     for (let i = 1; i < 5; i++) {
@@ -156,8 +158,15 @@ socket.on('name change', () => {
     $('button.name-button').replaceWith('<form class="chat"><input type="text" class="form-control" id="m" autocomplete="off" /></form>');
 });
 
+socket.on('default level', (level) => {
+    defaultLevel = level;
+    $('#default-level-input').val(level);
+});
+
 socket.on('load data', data => {
     if (typeof data !== 'object') return;
+    defaultLevel = data.defaultLevel;
+    $('#default-level-input').val(defaultLevel);
     for (let i = 0; i < 6; i++) {
         let pokeno = i + 1;
         setPokemon(pokeno, data["pokemon"][i]);
