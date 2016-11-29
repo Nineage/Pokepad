@@ -61,7 +61,7 @@ const setPokemon = function(pokeno, pokemon, server) {
     }
     //Now we propagate
     $(panel).text(pokemon);
-    $(img).addClass(pokemon.toLowerCase().split(" ").join("-").replace(/ /g, ""));
+    $(img).addClass(pokemon.toLowerCase().replace(/\./g, "").replace(/ /g, "-"));
     let data = [];
     let pokeData = pokedex[0][toId(pokemon)];
     for (let i in pokeData.abilities) {
