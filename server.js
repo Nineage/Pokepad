@@ -145,8 +145,8 @@ const packSet = function (moveset) {
 		}
 		ivs= ivObj;
 	}
-	if (!ability || !~abilities.indexOf(ability) || !nature ||
-		!natures[nature.toLowerCase()] || moves.length > 4) return;
+	if (!ability || !~abilities.indexOf(ability) || moves.length > 4) return;
+    if (!nature || !natures[nature.toLowerCase()]) nature = "Serious";
 	let output = {"name": pokemon, "ability": ability, "nature": nature, "level": level, "moves": moves};
 	if (evs) output.evs = evs;
 	if (ivs) output.ivs = ivs;
