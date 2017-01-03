@@ -163,7 +163,7 @@ app.get('/', (req, res) => {
 
 app.get('/create', (req,res) => {
 		let id = Rooms.create();
-		res.redirect('/build/' + id);
+		res.redirect('./build/' + id);
 });
 
 app.get('/build/:id', (req,res) => {
