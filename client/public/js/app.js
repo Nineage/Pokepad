@@ -4,7 +4,7 @@
  * https://github.com/nineage/pokepad
  * @license MIT license
  */
-const socket = io.connect('http://localhost:3000/', {path:'http://144.217.163.43:3000/pokepad/'});
+const socket = io.connect('http://144.217.163.43:3000/');
 const hpArr = ["Hidden Power Fire", "Hidden Power Water", "Hidden Power Grass", "Hidden Power Electric", "Hidden Power Fighting", "Hidden Power Flying", "Hidden Power Fairy", "Hidden Power Ice", "Hidden Power Poison", "Hidden Power Ghost", "Hidden Power Psychic", "Hidden Power Dark", "Hidden Power Steel", "Hidden Power Rock", "Hidden Power Ground", "Hidden Power Bug", "Hidden Power Dragon"];
 
 /**
@@ -130,7 +130,8 @@ $(document).ready(() => {
  * Socket events
  */
 socket.on('connect', () => {
-    socket.emit('load', window.location.pathname.substr(7));
+    let pathname = window.location.pathname;
+    socket.emit('load', pathname.substr(pathname.length - 9));
 });
 
 socket.on('load chat', messages => {
