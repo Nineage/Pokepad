@@ -47,7 +47,6 @@ const Rooms = module.exports = {
             lastUpdate: null, //avoids occasionally double submission
         };
         Rooms.views[Rooms.rooms[id].viewid] = id;
-        console.log(Rooms.rooms[id].viewid);
         return id;
     },
     getTeam: function(room) {
