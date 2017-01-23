@@ -150,6 +150,10 @@ $('#export-btn').click(() => {
     $('#export').modal('show');
 });
 
+$('#invite-btn').click(() => {
+    $('#invite').modal('show');
+});
+
 $('.panel-tab-item').click((e) => {
     let tab = e.target.id;
     let curPanel = tab.charAt(tab.length - 1);
