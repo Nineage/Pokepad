@@ -173,29 +173,15 @@ app.get('/build/:id', (req,res) => {
 		res.render('404');
 	}
 });
-
-app.get('/view/:id', (req,res) => {
-	if (Rooms.views[req.path.substr(6)]) {
-		res.render('viewer');
-	}	else {
-		res.render('404');
-	}
-});
 /**
  * Socket events
  */
-
 io.on('connection', (socket) => {
 	socket.pokemon = randPoke();
 	socket.name = 'Anonymous ' + socket.pokemon;
 	socket.img = 'http://www.pokestadium.com/assets/img/sprites/misc/icons/' + socket.pokemon.toLowerCase() + '.png';
 
 	socket.on('load', (data) => {
-		socket.edit = true;
-		if (!Rooms.rooms[data] && data && typeof data === "string") {
-			data = Rooms.views[data] || data;
-			socket.edit = false;
-		}
   		socket.join(data);
   		socket.room = data;
   		socket.emit('load chat', Rooms.loadChat(socket.room));
@@ -214,7 +200,6 @@ io.on('connection', (socket) => {
 	socket.on('name chosen', (name) => {
 		name = parseName(name);
 		if (name === 'Nineage') socket.img = 'http://www.pokestadium.com/assets/img/sprites/misc/icons/phanpy.png';
-		if (name === 'Infamy') socket.img = 'http://www.pokestadium.com/assets/img/sprites/misc/icons/gible.png';
 		let oldName = socket.name;
 		socket.name = name;
 		socket.emit('name change');
@@ -223,7 +208,6 @@ io.on('connection', (socket) => {
 		Rooms.updateChat(socket.room, false, false, msg);
 	});
 	socket.on('default level', (level) => {
-		if (!socket.edit) return;
 		let room = socket.room;
 		let n = Number(level);
 		if (isNaN(n) || n < 1 || n % 1 !== 0) return;
@@ -234,7 +218,6 @@ io.on('connection', (socket) => {
 		Rooms.updateChat(room, null, null, msg);
 	});
 	socket.on('pokemon selected', (pokeno, pokemon) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!~pokenames.indexOf(pokemon)) return;
 		let room = socket.room;
@@ -248,7 +231,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'pokemon', pokemon);
 	});
 	socket.on('item selected', (pokeno, item) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!~items.indexOf(item)) return;
 		let room = socket.room;
@@ -260,7 +242,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'items', item);
 	});
 	socket.on('ability selected', (pokeno, ability, auto) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!~abilities.indexOf(ability)) return;
 		let room = socket.room;
@@ -276,7 +257,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'abilities', ability);
 	});
 	socket.on('shiny change', (pokeno, bool) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (typeof bool !== 'boolean') return;
 		let room = socket.room;
@@ -288,7 +268,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'shiny', bool);
 	});
 	socket.on('level change', (pokeno, level) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		level = Number(level);
 		if (isNaN(level)) return;
@@ -301,7 +280,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'levels', level);
 	});
 	socket.on('nature selected', (pokeno, nature) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!natures[nature.toLowerCase()]) return;
 		let room = socket.room;
@@ -313,7 +291,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'natures', nature);
 	});
 	socket.on('move selected', (pokeno, moveno, move) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!~moves.indexOf(move)) return;
 		let room = socket.room;
@@ -325,7 +302,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'moves', move, moveno);
 	});
 	socket.on('ev selected', (pokeno, stat, ev) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		ev = Number(ev);
 		if (isNaN(ev)) return;
@@ -337,7 +313,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'evs', ev, stat);
 	});
 	socket.on('iv selected', (pokeno, stat, iv) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		iv = Number(iv);
 		if (isNaN(iv)) return;
@@ -349,7 +324,6 @@ io.on('connection', (socket) => {
 		Rooms.updateTeam(room, pokeno, 'ivs', iv, stat);
 	});
 	socket.on('get moveset', (pokeno, pokemon, moveset) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		if (!pokemon || !movesets[pokemon]) return false;
 		let data  = movesets[pokemon][moveset];
@@ -363,7 +337,6 @@ io.on('connection', (socket) => {
 		}
 	});
 	socket.on('import moveset', (pokeno, moveset) => {
-		if (!socket.edit) return;
 		if (isNaN(pokeno) || pokeno > 6 || pokeno < 1) return;
 		let room = socket.room
 		let data = packSet(moveset);
@@ -374,11 +347,6 @@ io.on('connection', (socket) => {
 			Rooms.updateChat(room, null, null, msg);
 			Rooms.importSet(room, pokeno, data.name, data);
 		}
-	});
-	socket.on('get view only', () => {
-		if (!socket.edit) return;
-		let room = socket.room;
-		io.sockets.in(room).emit('view only', Rooms.rooms[room].viewid || '');
 	});
 	socket.on('disconnect', () => {
 		let msg = socket.name + ' has left.';

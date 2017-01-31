@@ -122,19 +122,16 @@ $(document).ready(() => {
     $('.nature').typeahead({
         source: data
     });
-    $('#edit-url').text('http://' + window.location.hostname + window.location.pathname);
-    $('#edit-url').attr("href", window.location.pathname);
+
     socket.emit('send team', 'load data');
-    socket.emit('get view only');
 });
 
 /**
  * Socket events
  */
 socket.on('connect', () => {
-    let path = window.location.pathname;
-    if (~path.indexOf("/view")) socket.emit('load', path.substr(6));
-    else socket.emit('load', path.substr(7));
+    let pathname = window.location.pathname;
+    socket.emit('load', pathname.substr(pathname.length - 9));
 });
 
 socket.on('load chat', messages => {
@@ -146,12 +143,6 @@ socket.on('load chat', messages => {
         }
     }
     $('#messages').scrollTop(10 * 40 ^ 100000000000);
-});
-
-socket.on('view only', id => {
-    let url = 'http://' + window.location.hostname + '/view/' + id;
-    $('#view-url').text(url);
-    $('#view-url').attr("href", url);
 });
 
 socket.on('chat message', (by, poke, msg) => {

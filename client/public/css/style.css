@@ -24,10 +24,8 @@ form {
     width: 12%;
 }
 
-#export-btn,
-#invite-btn {
+#export-btn {
     float: right;
-    margin-right: 1%;
     margin-top: 1%;
 }
 
@@ -174,7 +172,7 @@ form {
 }
 
 .form-control {
-    height: 30px;
+    height: 38px;
 }
 
 .toggle-panel-item {
@@ -285,13 +283,13 @@ form {
 }
 
 .se-pre-con {
-    /*position: fixed;
+    position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url(/pokepad/images/pokeball.gif) center no-repeat #fff;*/
+    background: url(/pokepad/images/pokeball.gif) center no-repeat #fff;
 }
 
 
