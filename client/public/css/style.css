@@ -24,8 +24,10 @@ form {
     width: 12%;
 }
 
+#invite-btn,
 #export-btn {
     float: right;
+    margin-right: 1%;
     margin-top: 1%;
 }
 
@@ -266,6 +268,13 @@ form {
     border: 1px solid #000;
     padding: 0.8%;
     border-radius: .35em;
+}
+
+#read-only-message {
+    text-align: center;
+    font-size: 16pt;
+    color: rgb(144, 144, 144);
+    margin-top: 15%;
 }
 
 /************************/

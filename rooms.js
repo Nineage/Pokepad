@@ -22,10 +22,12 @@ const newEv = {
  */
 const Rooms = module.exports = {
     rooms: {},
+    views: {},
     create: function () {
         let id = shortid.generate();
         Rooms.rooms[id] = {
             id: id,
+            viewid: shortid.generate(),
             users: [],
             team: {
                 defaultLevel: 100,
@@ -44,6 +46,7 @@ const Rooms = module.exports = {
             chat: [],
             lastUpdate: null, //avoids occasionally double submission
         };
+        Rooms.views[Rooms.rooms[id].viewid] = id;
         return id;
     },
     getTeam: function(room) {

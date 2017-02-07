@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <title>Pok&eacute;pad</title>
     <meta charset="utf-8">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="/pokepad/css/style.css" />
     <link rel="icon" href="/pokepad/images/favicon.ico" type="image/x-icon" />
 </head>
+
 <body>
     <div class="se-pre-con"></div>
     <nav class="navbar navbar-default">
@@ -17,8 +19,7 @@
                 <a class="navbar-brand" href="/">Pok&eacute;pad</a>
             </div>
             <div id="nav-left-items">
-                 <button type="button" id="export-btn" class="btn btn-sm" data-toggle="export-modal" data-target="#export">Export Team</button>
-                 <button type="button" id="invite-btn" class="btn btn-sm" data-toggle="invite-modal" data-target="#invite">Invite</button>
+                <button type="button" id="export-btn" class="btn btn-sm" data-toggle="export-modal" data-target="#export">Export Team</button>
             </div>
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav" id="nav-line">
@@ -26,7 +27,7 @@
                     <li><a href="http://www.smogon.com/dex/" target=_blank>Smogon Dex</a></li>
                     <li><a href="#" target=_blank>Info</a></li>
                     <li><a href="https://github.com/Nineage/Pokepad" target=_blank>Github</a></li>
-                    <li><a href="https://github.com/Nineage/Pokepad/graphs/contributors" target=_blank>Credits</a></li>
+                    <li><a href="#" target=_blank>Credits</a></li>
                     <li><a href="https://gonefroggin.com/" target=_blank>Frog Blog</a></li>
                 </ul>
             </div>
@@ -42,26 +43,6 @@
                             </div>
                             <div class="modal-body">
                                 <textarea id="export-box-area" readonly rows="15" cols="30"></textarea>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="invite" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
-
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Invite</h4>
-                            </div>
-                            <div class="modal-body">
-                                <h5>Invite to Edit:</h5>
-                                <a href="" target="_blank" id="edit-url"></a>
-                                <h5>Invite to View:</h5>
-                               <a href="" target="_blank" id="view-url"></a>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -111,19 +92,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-1-general" class="tab-item">
                                         <label for="pokemon-input-1" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-1" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-1" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-1" class="inline-label">Level</label>
-                                            <input id="level-input-1" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-1" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-1" >Shiny</label>
-                                            <input id="shiny-input-1" type="checkbox" class="shiny">
+                                            <input id="shiny-input-1" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-1" class="inline-label">Item</label>
-                                        <input id="item-input-1" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-1" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-1" class="inline-label">Ability</label>
-                                        <input id="ability-input-1" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-1" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-1">Movesets</button>
                                             <div class="hidden-button smogset-menu" id="moveset-input-1" aria-labelledby="moveset-toggle-1">
@@ -133,43 +114,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-1-moves" class="tab-item hidden-button">
                                         <label for="move-input-1-1">Moves</label>
-                                        <input id="move-input-1-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-1-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-1-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-1-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-1-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-1-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-1-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-1-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-1-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-1" class="inline-label">HP</label>
-                                            <input id="hp-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-1" class="inline-label">Attack</label>
-                                            <input id="atk-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-1" class="inline-label">Defense</label>
-                                            <input id="def-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-1" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-1" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-1" class="inline-label">Speed</label>
-                                            <input id="spe-input-1" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-1" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-1" class="inline-label">Nature</label>
-                                            <input id="nature-input-1" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-1" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-1" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-1" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-1" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-1" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-1" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-1" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-1" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-1" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-1" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-1" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-1" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-1" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-1-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-1" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-1" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-1" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -192,19 +173,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-2-general" class="tab-item">
                                         <label for="pokemon-input-2" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-2" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-2" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-2" class="inline-label">Level</label>
-                                            <input id="level-input-2" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-2" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-2" >Shiny</label>
-                                            <input id="shiny-input-2" type="checkbox" class="shiny">
+                                            <input id="shiny-input-2" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-2" class="inline-label">Item</label>
-                                        <input id="item-input-2" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-2" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-2" class="inline-label">Ability</label>
-                                        <input id="ability-input-2" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-2" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-2">Movesets</button>
                                             <div class="hidden-button smogset-menu" id="moveset-input-2" aria-labelledby="dropdownMenuButton">
@@ -214,43 +195,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-2-moves" class="tab-item hidden-button">
                                         <label for="move-input-2-1">Moves</label>
-                                        <input id="move-input-2-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-2-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-2-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-2-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-2-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-2-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-2-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-2-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-2-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-2" class="inline-label">HP</label>
-                                            <input id="hp-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-2" class="inline-label">Attack</label>
-                                            <input id="atk-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-2" class="inline-label">Defense</label>
-                                            <input id="def-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-2" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-2" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-2" class="inline-label">Speed</label>
-                                            <input id="spe-input-2" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-2" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-2" class="inline-label">Nature</label>
-                                            <input id="nature-input-2" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-2" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-2" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-2" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-2" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-2" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-2" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-2" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-2" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-2" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-2" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-2" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-2" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-2" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-2-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-2" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-2" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-2" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -273,19 +254,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-3-general" class="tab-item">
                                         <label for="pokemon-input-3" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-3" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-3" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-3" class="inline-label">Level</label>
-                                            <input id="level-input-3" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-3" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-3" >Shiny</label>
-                                            <input id="shiny-input-3" type="checkbox" class="shiny">
+                                            <input id="shiny-input-3" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-3" class="inline-label">Item</label>
-                                        <input id="item-input-3" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-3" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-3" class="inline-label">Ability</label>
-                                        <input id="ability-input-3" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-3" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-3">Movesets</button>
                                             <div class="hidden-button smogset-menu" id="moveset-input-3" aria-labelledby="dropdownMenuButton">
@@ -295,43 +276,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-3-moves" class="tab-item hidden-button">
                                         <label for="move-input-3-1">Moves</label>
-                                        <input id="move-input-3-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-3-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-3-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-3-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-3-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-3-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-3-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-3-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-3-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-3" class="inline-label">HP</label>
-                                            <input id="hp-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-3" class="inline-label">Attack</label>
-                                            <input id="atk-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-3" class="inline-label">Defense</label>
-                                            <input id="def-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-3" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-3" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-3" class="inline-label">Speed</label>
-                                            <input id="spe-input-3" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-3" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-3" class="inline-label">Nature</label>
-                                            <input id="nature-input-3" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-3" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-3" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-3" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-3" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-3" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-3" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-3" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-3" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-3" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-3" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-3" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-3" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-3" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-3-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-3" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-3" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-3" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -356,19 +337,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-4-general" class="tab-item">
                                         <label for="pokemon-input-4" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-4" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-4" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-4" class="inline-label">Level</label>
-                                            <input id="level-input-4" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-4" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-4" >Shiny</label>
-                                            <input id="shiny-input-4" type="checkbox" class="shiny">
+                                            <input id="shiny-input-4" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-4" class="inline-label">Item</label>
-                                        <input id="item-input-4" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-4" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-4" class="inline-label">Ability</label>
-                                        <input id="ability-input-4" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-4" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-4">Movesets</button>
                                             <div class="hidden-button smogset-menu lower-dropdown" id="moveset-input-4" aria-labelledby="dropdownMenuButton">
@@ -378,43 +359,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-4-moves" class="tab-item hidden-button">
                                         <label for="move-input-4-1">Moves</label>
-                                        <input id="move-input-4-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-4-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-4-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-4-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-4-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-4-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-4-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-4-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-4-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-4" class="inline-label">HP</label>
-                                            <input id="hp-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-4" class="inline-label">Attack</label>
-                                            <input id="atk-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-4" class="inline-label">Defense</label>
-                                            <input id="def-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-4" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-4" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-4" class="inline-label">Speed</label>
-                                            <input id="spe-input-4" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-4" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-4" class="inline-label">Nature</label>
-                                            <input id="nature-input-4" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-4" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-4" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-4" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-4" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-4" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-4" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-4" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-4" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-4" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-4" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-4" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-4" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-4" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-4-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-4" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-4" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-4" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -437,19 +418,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-5-general" class="tab-item">
                                         <label for="pokemon-input-5" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-5" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-5" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-5" class="inline-label">Level</label>
-                                            <input id="level-input-5" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-5" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-5" >Shiny</label>
-                                            <input id="shiny-input-5" type="checkbox" class="shiny">
+                                            <input id="shiny-input-5" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-5" class="inline-label">Item</label>
-                                        <input id="item-input-5" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-5" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-5" class="inline-label">Ability</label>
-                                        <input id="ability-input-5" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-5" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-5">Movesets</button>
                                             <div class="hidden-button smogset-menu lower-dropdown" id="moveset-input-5" aria-labelledby="dropdownMenuButton">
@@ -459,43 +440,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-5-moves" class="tab-item hidden-button">
                                         <label for="move-input-5-1">Moves</label>
-                                        <input id="move-input-5-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-5-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-5-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-5-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-5-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-5-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-5-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-5-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-5-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-5" class="inline-label">HP</label>
-                                            <input id="hp-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-5" class="inline-label">Attack</label>
-                                            <input id="atk-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-5" class="inline-label">Defense</label>
-                                            <input id="def-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-5" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-5" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-5" class="inline-label">Speed</label>
-                                            <input id="spe-input-5" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-5" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-5" class="inline-label">Nature</label>
-                                            <input id="nature-input-5" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-5" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-5" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-5" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-5" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-5" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-5" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-5" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-5" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-5" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-5" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-5" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-5" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-5" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-5-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-5" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-5" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-5" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -518,19 +499,19 @@
                                 <form class="form-horizontal">
                                     <div id="mon-6-general" class="tab-item">
                                         <label for="pokemon-input-6" class="inline-label">Pok&eacute;mon</label>
-                                        <input id="pokemon-input-6" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" />
+                                        <input id="pokemon-input-6" type="text" class="form-control pokemon" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="shiny-space">
                                             <label for="level-input-6" class="inline-label">Level</label>
-                                            <input id="level-input-6" type="text" class="form-control level" autocomplete="off" />
+                                            <input id="level-input-6" type="text" class="form-control level" autocomplete="off" disabled />
                                             <span class="shiny-button-area">
                                             <label for="shiny-input-6" >Shiny</label>
-                                            <input id="shiny-input-6" type="checkbox" class="shiny">
+                                            <input id="shiny-input-6" type="checkbox" class="shiny" disabled>
                                         </span>
                                         </div>
                                         <label for="item-input-6" class="inline-label">Item</label>
-                                        <input id="item-input-6" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" />
+                                        <input id="item-input-6" type="text" class="form-control item" autocomplete="off" data-provide="typeahead" disabled />
                                         <label for="ability-input-6" class="inline-label">Ability</label>
-                                        <input id="ability-input-6" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" />
+                                        <input id="ability-input-6" type="text" class="form-control ability" autocomplete="off" data-provide="typeahead" disabled />
                                         <div class="dropdown open">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="moveset-toggle-6">Movesets</button>
                                             <div class="hidden-button smogset-menu lower-dropdown" id="moveset-input-6" aria-labelledby="dropdownMenuButton">
@@ -540,43 +521,43 @@
                                     <!-- EVs, IVs, Nature, etc. go here -->
                                     <div id="mon-6-moves" class="tab-item hidden-button">
                                         <label for="move-input-6-1">Moves</label>
-                                        <input id="move-input-6-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-6-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-6-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
-                                        <input id="move-input-6-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" />
+                                        <input id="move-input-6-1" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-6-2" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-6-3" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
+                                        <input id="move-input-6-4" type="text" class="form-control move" autocomplete="off" data-provide="typeahead" disabled />
                                     </div>
                                     <div id="mon-6-evs" class="container-fluid ev-main-menu tab-item hidden-button">
                                         <div class="col-md-9">
                                             <p style="font-weight: bold">EVs</p>
                                             <label for="hp-input-6" class="inline-label">HP</label>
-                                            <input id="hp-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="hp-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="atk-input-6" class="inline-label">Attack</label>
-                                            <input id="atk-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="atk-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="def-input-6" class="inline-label">Defense</label>
-                                            <input id="def-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="def-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spa-input-6" class="inline-label">Sp. Atk.</label>
-                                            <input id="spa-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spa-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spd-input-6" class="inline-label">Sp. Def.</label>
-                                            <input id="spd-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spd-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="spe-input-6" class="inline-label">Speed</label>
-                                            <input id="spe-input-6" type="text" class="form-control ev" autocomplete="off" />
+                                            <input id="spe-input-6" type="text" class="form-control ev" autocomplete="off" disabled />
                                             <label for="nature-input-6" class="inline-label">Nature</label>
-                                            <input id="nature-input-6" type="text" class="form-control nature" autocomplete="off" />
+                                            <input id="nature-input-6" type="text" class="form-control nature" autocomplete="off" disabled />
                                         </div>
                                         <div class="col-md-3">
                                             <label>IVs</label>
-                                            <input id="hp-iv-input-6" type="text" class="form-control iv top-iv" autocomplete="off" />
-                                            <input id="atk-iv-input-6" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="def-iv-input-6" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spa-iv-input-6" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spd-iv-input-6" type="text" class="form-control iv" autocomplete="off" />
-                                            <input id="spe-iv-input-6" type="text" class="form-control iv" autocomplete="off" />
+                                            <input id="hp-iv-input-6" type="text" class="form-control iv top-iv" autocomplete="off" disabled />
+                                            <input id="atk-iv-input-6" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="def-iv-input-6" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spa-iv-input-6" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spd-iv-input-6" type="text" class="form-control iv" autocomplete="off" disabled />
+                                            <input id="spe-iv-input-6" type="text" class="form-control iv" autocomplete="off" disabled />
                                         </div>
                                     </div>
                                     <div id="mon-6-import" class="container-fluid import-main-menu tab-item hidden-button">
                                         <form>
                                             <textarea id="import-area-6" rows="10" cols="26"></textarea>
-                                            <button type="button" id="import-btn-6" class="btn btn-sm import">Import!</button>
+                                            <button type="button" id="import-btn-6" class="btn btn-sm import" disabled>Import!</button>
                                         </form>
                                     </div>
                                 </form>
@@ -601,9 +582,10 @@
                     </div>
                 </div>
                 <div id="lower-options-area">
-                  <label for="default-level-input" class="inline-label inline-label-small">Default Level: </label>
-                  <input id="default-level-input" type="text" class=" form-control default-level" autocomplete="off" />
+                    <label for="default-level-input" class="inline-label inline-label-small">Default Level: </label>
+                    <input id="default-level-input" type="text" class=" form-control default-level" autocomplete="off" disabled />
                 </div>
+                <p id="read-only-message">Read Only</p>
             </div>
         </div>
     </div>
@@ -619,4 +601,5 @@
     <script src="/pokepad/js/handlers.js"></script>
     <script src="/pokepad/js/bootstrap3-typeahead.js"></script>
 </body>
+
 </html>

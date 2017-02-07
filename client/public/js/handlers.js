@@ -117,7 +117,7 @@ function changeTab(tab, curPanel) {
 /**
  * Jquery event handlers
  */
- 
+
  $("input[type='text']").click(function () {
    $(this).select();
 });
@@ -148,6 +148,10 @@ $('form.name').submit(() => {
 $('#export-btn').click(() => {
     socket.emit('send team', 'build importable');
     $('#export').modal('show');
+});
+
+$('#invite-btn').click(() => {
+    $('#invite').modal('show');
 });
 
 $('.panel-tab-item').click((e) => {
