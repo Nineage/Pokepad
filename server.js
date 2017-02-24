@@ -24,6 +24,7 @@ app.use(express.static(__dirname + '/client/public'));
 
 const Rooms = require('./rooms.js');
 const movesets = require('./setdex-xy.js');
+const parser = require('./chat-parser.js');
 
 const serverData = require('./server-data.js');
 const randPoke = serverData.randPoke;
@@ -206,8 +207,8 @@ io.on('connection', (socket) => {
 	});
 	socket.on('chat message', (msg, room) => {
 		if (msg.trim().length < 1) return;
-    	io.sockets.in(socket.room).emit('chat message', socket.name, socket.img, escapeHTML(msg));
-    	Rooms.updateChat(socket.room, socket.name, socket.img, msg);
+    	io.sockets.in(socket.room).emit('chat message', socket.name, socket.img, parser.parseMessage(msg));
+    	Rooms.updateChat(socket.room, socket.name, socket.img, parser.parseMessage(msg));
 	});
 	socket.on('send team', (res) => {
 		socket.emit(res, Rooms.getTeam(socket.room));
