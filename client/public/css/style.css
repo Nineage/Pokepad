@@ -154,6 +154,11 @@ form {
     overflow: auto;
 }
 
+.dem-feels-emote {
+    height: 30px !important;
+    width: 30px !important;
+}
+
 /************************/
 /* Editor Style
 /************************/
