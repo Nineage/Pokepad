@@ -75,7 +75,13 @@ const setPokemon = function(pokeno, pokemon, server) {
     });
     $('#ability-input-' + pokeno).val(pokeData.abilities[0]);
     if (!server) socket.emit('ability selected', pokeno, pokeData.abilities[0], true);
-    data = learnsets[0][toId(pokemon)];
+    let base_form = pokemon.split('-')[0];
+    const pokemon_with_alternate_learnsets_depending_on_form = ["Pikachu", "Rotom", "Kyurem", "Wormadam", "Pichu", "Floette", "Pumpkaboo"];
+    if(~pokemon_with_alternate_learnsets_depending_on_form.indexOf(base_form)) {
+        data = learnsets[0][toId(pokemon)];
+    } else {
+        data = learnsets[0][toId(base_form)];
+    }
     if (~data.indexOf('Hidden Power')) data = data.concat(hpArr);
     let moveVar = '#move-input-' + pokeno;
     for (let j = 1; j < 5; j++) {
