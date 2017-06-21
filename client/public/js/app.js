@@ -257,9 +257,19 @@ socket.on('single change', (type, pokeno, change) => {
             $('#nature-input-' + pokeno).val(change);
             break;
         case 'ev':
+            if(change > 252) {
+                change = 252;
+            } else if(change < 0) {
+                change = 0;
+            }
             $('#' + pokeno).val(change);
             break;
         case 'iv':
+            if(change > 31) {
+                change = 31;
+            } else if (change < 0) {
+                change = 0;
+            }
             $('#' + pokeno).val(change);
             break;
         default:
