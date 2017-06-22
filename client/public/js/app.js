@@ -44,11 +44,16 @@ const setPokemon = function(pokeno, pokemon, server) {
     let pokevar = '#pokemon-input-' + pokeno;
     let panel = '#panel-title-' + pokeno;
     let img = '#panel-image-' + pokeno;
-    let oldMon = $(panel).text();
+    let oldMon = $(panel).text().toLowerCase().replace(/\./g, "").replace(/\:/g, "").replace(/\%/g, "").replace(/\'/g, "").replace(/ /g, "-");
+    let oldMon_base_form = oldMon.split('-')[0];
+    const forms_with_visual_differences = ["pumpkaboo", "gourgeist", "silvally", "arceus"];
     $(pokevar).val(pokemon);
 
     //First lets clear everything
-    $(img).removeClass(oldMon.toLowerCase())
+    if(~forms_with_visual_differences.indexOf(oldMon_base_form)) {
+        oldMon = oldMon_base_form;
+    }
+    $(img).removeClass(oldMon);
     $('#item-input-' + pokeno).val("");
     $('#level-input-' + pokeno).val(defaultLevel);
     $('#shiny-input-' + pokeno).prop("checked", false);
@@ -63,7 +68,12 @@ const setPokemon = function(pokeno, pokemon, server) {
     }
     //Now we propagate
     $(panel).text(pokemon);
-    $(img).addClass(pokemon.toLowerCase().replace(/\./g, "").replace(/ /g, "-"));
+    let pokemon_base_form = pokemon.toLowerCase().split('-')[0];
+    let pokemon_img_class = pokemon.toLowerCase().replace(/\./g, "").replace(/\:/g, "").replace(/\'/g, "").replace(/\%/g, "").replace(/ /g, "-");
+    if(~forms_with_visual_differences.indexOf(pokemon_base_form)) {
+        pokemon_img_class = pokemon_base_form;
+    }
+    $(img).addClass(pokemon_img_class);
     let data = [];
     let pokeData = pokedex[0][toId(pokemon)];
     for (let i in pokeData.abilities) {

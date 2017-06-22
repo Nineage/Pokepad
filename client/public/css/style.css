@@ -393,10 +393,10 @@ form {
 .art.sandshrew{background-position:-672px -96px}
 .art.sandslash-alola{background-position:-768px -96px}
 .art.sandslash{background-position:-864px -96px}
-.art.nidoran{background-position:-960px -96px}
+.art.nidoran-f{background-position:-960px -96px}
 .art.nidorina{background-position:-1056px -96px}
 .art.nidoqueen{background-position:-1152px -96px}
-.art.nidoran-male{background-position:-1248px -96px}
+.art.nidoran-m{background-position:-1248px -96px}
 .art.nidorino{background-position:-1344px -96px}
 .art.nidoking{background-position:-1440px -96px}
 .art.clefairy{background-position:-1536px -96px}
@@ -841,8 +841,8 @@ form {
 .art.buizel{background-position:-480px -1536px}
 .art.floatzel{background-position:-576px -1536px}
 .art.cherubi{background-position:-672px -1536px}
-.art.cherrim-overcast{background-position:-768px -1536px}
-.art.cherrim{background-position:-864px -1536px}
+.art.cherrim{background-position:-768px -1536px}
+.art.cherrim-sunshine{background-position:-864px -1536px}
 .art.shellos-east{background-position:-960px -1536px}
 .art.shellos{background-position:-1056px -1536px}
 .art.gastrodon-east{background-position:-1152px -1536px}
@@ -1135,8 +1135,8 @@ form {
 .art.pangoro{background-position:-2592px -2400px}
 .art.furfrou{background-position:-2688px -2400px}
 .art.espurr{background-position:-2784px -2400px}
-.art.meowstic-male{background-position:0 -2496px}
-.art.meowstic{background-position:-96px -2496px}
+.art.meowstic{background-position:0 -2496px}
+.art.meowstic-f{background-position:-96px -2496px}
 .art.honedge{background-position:-192px -2496px}
 .art.doublade{background-position:-288px -2496px}
 .art.aegislash:hover,
@@ -1206,10 +1206,10 @@ form {
 .art.vikavolt{background-position:-576px -2688px}
 .art.crabrawler{background-position:-672px -2688px}
 .art.crabominable{background-position:-768px -2688px}
-.art.oricorio-baile{background-position:-864px -2688px}
-.art.oricorio-pa-u{background-position:-960px -2688px}
+.art.oricorio{background-position:-864px -2688px}
+.art.oricorio-pau{background-position:-960px -2688px}
 .art.oricorio-sensu{background-position:-1056px -2688px}
-.art.oricorio{background-position:-1152px -2688px}
+.art.oricorio-pom-pom{background-position:-1152px -2688px}
 .art.cutiefly{background-position:-1248px -2688px}
 .art.ribombee{background-position:-1344px -2688px}
 .art.rockruff{background-position:-1440px -2688px}
@@ -1245,7 +1245,7 @@ form {
 .art.pyukumuku{background-position:-1344px -2784px}
 .art.type-null{background-position:-1440px -2784px}
 .art.silvally{background-position:-1536px -2784px}
-.art.minior-core{background-position:-1632px -2784px}
+.art.minior-meteor{background-position:-1632px -2784px}
 .art.minior:hover,
 .art.minior{background-position:-1728px -2784px}
 .art.komala{background-position:-1824px -2784px}
