@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    
+<%- include('partials/builder-parts/head.html'); %>
+
+    <body>
+        <%- include('partials/builder-parts/modals.html'); %>
+        <%- include('partials/builder-parts/nav.html'); %>
+        
+        <div class="container container-fill">
+            <div class="row">
+                <%- include('partials/builder-parts/select-mon.html'); %>
+                <%- include('partials/builder-parts/pokemon.html'); %>
+                <%- include('partials/builder-parts/chat.html'); %>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="/data/pokedex.js"></script>
+        <script type="text/javascript" src="/data/items.js"></script>
+        <script type="text/javascript" src="/data/learnsets.js"></script>
+        <script type="text/javascript" src="/data/moves.js"></script>
+        <script type="text/javascript" src="/data/abilities.js"></script>
+        <script type="text/javascript" src="/data/setdex-sm.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
+        <script type="text/javascript" src="/js/events.js"></script>
+        <script type="text/javascript" src="/js/bootstrap3-typeahead.js"></script>
+    </body>
+</html>

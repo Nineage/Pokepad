@@ -1,21 +1,30 @@
 {
   "name": "Pokepad",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A chat and collaborative teambuilder for competetive Pokemon.",
   "engines": {
     "node": ">=6.0.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "./node_modules/.bin/eslint *.js src/*.js" 
   },
+  "license": "MIT",
   "dependencies": {
-    "compression": "^1.6.2",
+    "chalk": "^2.1.0",
+    "compression": "^1.7.0",
     "dem-feels": "^1.8.1",
-    "ejs": "^2.5.2",
-    "express": "4.10.2",
-    "helmet": "^3.1.0",
-    "shortid": "^2.2.6",
-    "socket.io": "1.2.0"
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "fs": "^0.0.1-security",
+    "helmet": "^3.8.1",
+    "http": "^0.0.0",
+    "origindb": "^2.6.1",
+    "shortid": "^2.2.8",
+    "socket.io": "^2.0.3",
+    "winston": "^2.3.1"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "eslint": "^4.5.0"
+  }
 }

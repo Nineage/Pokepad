@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <%- include('partials/builder-parts/head.html'); %>
+
+    <body>
+        <%- include('partials/builder-parts/nav-home.html'); %>
+        <div class="jumbotron">
+            <h1>Pok&eacute;pad</h1>
+            <p class="lead">A collaborative teambuilding environment complete with Smogon dex integration!</p>
+            <hr />
+            <a href="/create" class="btn btn-primary">Make a new pad!</a>
+            <form>
+                <input id="roomId" type="text" class="form-control" placeholder="Enter existing pad ID" />
+                <a id="submitRoomId" href="" class="btn btn-primary">Go!</a>
+            </form>
+        </div>
+        <div class="footer">
+          <p>© 2019 Nineage and Fender</p>
+        </div>
+    </body>
+    
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $("#submitRoomId").click(function() {
+            $("#submitRoomId").attr("href", "/build/" + $("#roomId").val());
+        });
+    </script>
+</html>

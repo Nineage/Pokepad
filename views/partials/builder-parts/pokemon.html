@@ -1,0 +1,35 @@
+<!-- pokemon.html start -->
+<div id="main-col" class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+	 <div class="panel panel-primary">
+		 <div class="panel-heading">
+		 		<h3 id="pokemon-title" class="panel-title"></h3>
+		 </div>
+		 <div class="panel-body fill">
+		 	<div id="pokeinfo-panel-view">
+			 <form class="form-horizontal">
+				 <div class="row">
+					 <%- include('pokemon-parts/pokebasics-controls.html'); %>
+					 <%- include('pokemon-parts/pokeinfo-controls.html'); %>
+				 </div>
+				 <div class="row">
+					 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+						<%- include('pokemon-parts/move-select.html'); %>
+					 </div>
+					 <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+   						<%- include('pokemon-parts/stats.html'); %>
+					 </div>
+				 </div>
+			 </form>
+			<select id="smogdex-dropdown"></select>
+			<button id="import-set-btn" class="btn btn-success">Import set</button>
+			</div>
+			<div id="import-panel-view" class="hidden">
+				<div class="row">
+					<textarea id="import-set-area" rows="15" cols="40"></textarea>
+					<button type="button" class="btn btn-primary" id="submit-import-btn">Import!</button>
+				</div>
+			</div>
+		 </div>
+	 </div>
+ </div>
+ <!-- pokemon.html end -->

@@ -1,0 +1,242 @@
+/*
+*
+* General Style
+* 
+*/
+.container-fill {
+    width: 100%;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+#roomId {
+  max-width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+#nav-right {
+  float: right;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+}
+
+#nav-username {
+  font-weight: bold;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/*
+*
+* select-mon Style
+* 
+*/
+.mon-select-label {
+  color: black;
+}
+
+.mon-select-button {
+  cursor: pointer;
+}
+
+/*
+*
+* Editor Style
+* 
+*/
+div.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #008cba;
+}
+
+.move {
+  margin-bottom: 2%;
+}
+
+#chat-col {
+  padding-left: 0;
+  padding-right: 7px;
+}
+
+#main-col {
+  padding-right: 1%;
+}
+
+.inline-label {
+    display: block;
+    width: 40%;
+    height: 5%;
+    margin-top: 3%;
+    float: left;
+}
+
+#happy-input-1 {
+  width: 76px;
+}
+
+#pokemon-title {
+  display: inline;
+}
+
+#import-set-area {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#smogdex-dropdown,
+#submit-import-btn {
+  float: right;
+  margin-right: 4%;
+  margin-left: 2%;
+}
+
+#import-set-btn {
+  float: right;
+}
+
+/*
+*
+* Chat Style
+* 
+*/
+.list-group-item {
+  padding: 0;
+}
+
+#chat-area {
+  padding: 1px;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 300px;
+    max-height: 300px;
+}
+
+#messages li {
+    padding: 5px 10px;
+    padding-left: 1px;
+    word-wrap: break-word;
+    text-indent: 1px;
+    margin-left: 1px;
+}
+
+#messages li img {
+    margin-top: -10px;
+    height: 50%;
+    width: auto;
+}
+
+#messages .server {
+    font-style: italic;
+    padding-right: 10px;
+}
+
+#pokemon {
+    height: 300px;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.dem-feels-emote {
+    height: 30px !important;
+    width: 30px !important;
+}
+
+/*
+*
+* Stats Style
+* 
+*/
+.statform {
+	padding: 3px 13px 10px 13px;
+	font-size: 10pt;
+}
+.statform .col > div {
+	padding-top: 1px;
+	height: 28px;
+}
+.statform .col div label,
+.statform .col div em,
+.statform .col div b {
+	display: block;
+	padding: 5px 0 0 0;
+}
+.statform .col {
+	float: left;
+	width: 52px;
+	text-align: right;
+	font-size: 9pt;
+}
+.statform .basestatscol {
+	width: 38px;
+}
+.statform .statscol {
+	width: 36px;
+}
+.statform .statscol em,
+.statform .statscol b {
+	font-style: normal;
+	font-weight: bold;
+}
+.statform .graphcol {
+	width: 185px;
+}
+.statform .graphcol div span {
+	margin: 3px 0 0 5px;
+	display: block;
+	height: 8px;
+	border-bottom: 1px solid #AAAAAA;
+	border-right: 1px solid #AAAAAA;
+	background: #CCCCCC;
+}
+.statform .evcol,
+.statform .ivcol {
+	width: 48px;
+	text-align: center;
+}
+.statform .evslidercol {
+	width: 193px;
+	margin-right: 9px;
+	margin-left: 5px;
+	padding-top: 4px;
+	text-align: center;
+}
+.evslider {
+	width: 192px;
+	margin: 0 auto;
+}
+.statform .totalev b {
+	color: #DD2222;
+}
+.statform .totalev em {
+	font-style: normal;
+}
+.statform input.numform {
+	width: 40px;
+	height: 16px;
+	font-size: 9pt;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    text-align: center;
+}
