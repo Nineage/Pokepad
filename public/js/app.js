@@ -53,6 +53,7 @@ socket.on('server message', (message) => {
 
 // load chat on join
 socket.on('load chat', function(chat) {
+    if (chat.length < 1) $('#introModal').modal(); //shows intro information on first join
     for (var i = 0; i < chat.length; i++) {
 		if (!chat[i][0]) {
 			$('#messages').append('<li class="server">' + chat[i][1] + '</li>');
@@ -103,7 +104,7 @@ socket.on('update team', function(team, index) {
 
 // handle name changes
 socket.on('name change', function() {
-    $('.modal').modal('hide');
+    $('#pickName').modal('hide');
     $('#name-btn').addClass('hidden');
     $('#chat').removeClass('hidden');
 });

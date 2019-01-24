@@ -232,6 +232,10 @@ div.list-group>a.active:after{
 	font-size: 9pt;
 }
 
+#introModal {
+  text-align: center;
+}
+
 .footer {
     position: fixed;
     left: 0;

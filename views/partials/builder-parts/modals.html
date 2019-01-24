@@ -43,7 +43,16 @@
 <div id="introModal" class="modal fade">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Welcome to your new Pok&ecaute;pad!</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Welcome to your new Poképad!</h4>
+        </div>
+        <div class="modal-body">
+            <p>You can invite other people to this pad through direct link, or by sending them the code below:</p>
+            <strong><p id="padLink">Link could not be loaded</p></strong>
+            <p>Pads will automatically expire after a few days, so be sure to export your team when you're done!</p>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok, got it!</button>
         </div>
     </div>
 </div>

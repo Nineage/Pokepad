@@ -210,12 +210,15 @@ function loadDataFile(dataFile, value, id) {
 // Load data
 $(document).ready(function() {
     var path = window.location.pathname;
-    socket.emit('load', path.substring(path.lastIndexOf('/') + 1));
+    var room = path.substring(path.lastIndexOf('/') + 1);
+    socket.emit('load', room);
     
     loadDataFile(pokedex, "species", "pokemon");
     loadDataFile(items, "name", "item");
     loadDataFile(moveDex, "name", "move");
     loadDataFile(abilityDex, "name", "ability");
+    
+    $('#padLink').text(room);
 });
 
 //choose name
