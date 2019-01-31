@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "description": "A chat and collaborative teambuilder for competetive Pokemon.",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.0.0"
   },
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/.bin/eslint *.js src/*.js" 
+    "test": "./node_modules/.bin/eslint *.js src/*.js"
   },
   "license": "MIT",
   "dependencies": {
