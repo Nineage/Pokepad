@@ -95,6 +95,11 @@ module.exports = class Room {
 		return this.team;
 	}
 	
+	updateGen(newGen) {
+		this.team.gen = newGen;
+		return this.team;
+	}
+	
 	replaceSet(index, data) {
 		this.team["pokemon"][index] = data.pokemon;
 		this.team["items"][index] = data.item;

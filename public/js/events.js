@@ -32,6 +32,8 @@ var nature = {
 	'Timid': ['spe', 'atk']
 };
 
+var setdex = SETDEX_SM;
+
 function packSet(moveset) {
 	if (!moveset || typeof moveset !== "string") return;
 	var data = moveset.split('\n');
@@ -89,12 +91,11 @@ function updateTab(tab) {
         calculateStatTotal($(this).data("stat"));
     });
     
-    var setHTML = "";
     var mon = pokedex[toId(currentTeam.pokemon[index])].species;
     var sets;
     
     try {
-        sets = Object.keys(SETDEX_SM[mon]);
+        sets = Object.keys(setdex[mon]);
     } catch (e) {
         sets = [];
     }
@@ -260,6 +261,11 @@ $("#pokemon-input").change(function() {
     }
 });
 
+// Change current gen on server
+$("#gen-select").change(function() {
+    socket.emit('change gen', $("#gen-select").val());
+});
+
 // Change ability on server
 $("#ability-input").change(function() {
     if (abilityDex.hasOwnProperty(toId($("#ability-input").val()))) {
@@ -370,5 +376,5 @@ $("#smogdex-dropdown").change(function() {
     let setName = $(this).val();
     let pokeName = $("#pokemon-input").val();
     if (setName === "Custom Set") return;
-    socket.emit('import set', activeTab, SETDEX_SM[pokeName][setName], pokeName, setName);
+    socket.emit('import set', activeTab, setdex[pokeName][setName], pokeName, setName);
 });

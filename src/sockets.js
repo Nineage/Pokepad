@@ -7,6 +7,7 @@
 const parser = require('./chat-parser');
 const randPoke = require('./data/randpoke.js');
 const labels = ["1st","2nd","3rd","4th","5th","6th"];
+const SUPPORTED_GENS = ["DPP", "BW", "XY", "SM"];
 
 var lastUpdate = [];
 
@@ -149,6 +150,17 @@ module.exports = function (io) {
 			Rooms.updateChat(socket.room, false, msg);
 		});
 		
+		socket.on('change gen', (newGen) => {
+			newGen = escapeHTML(newGen);
+			if (!~SUPPORTED_GENS.indexOf(newGen)) return;
+			let team = Rooms.updateGen(socket.room, newGen);
+			io.sockets.in(socket.room).emit('update gen', team);
+			
+			let msg = socket.name + " changed the generation to " + newGen;
+			io.sockets.in(socket.room).emit('server message', msg);
+			Rooms.updateChat(socket.room, false, msg);
+		});
+		
 		// Does NOT! handle Pokemon changes
 		// Does not handle importables
 		socket.on('team update', (element, index, data, opts) => {
@@ -193,6 +205,7 @@ module.exports = function (io) {
 		socket.on('import set', (index, data, pokemon, smogName) => {
 			let cleanSet = sanitizeSet(index, data, pokemon);
 			if (!cleanSet) return false;
+			console.log('here')
 
 			let team = Rooms.replaceSet(socket.room, index, data);
 			io.sockets.in(socket.room).emit('update pokemon', team, index);

@@ -94,6 +94,25 @@ socket.on('update pokemon', function(team, index) {
     if (index === activeTab) updateTab(activeTab);
 });
 
+socket.on('update gen', function(team) {
+    currentTeam = team;
+    switch (currentTeam.gen) {
+        case "XY":
+            setdex = SETDEX_XY;
+            break;
+        case "BW":
+            setdex = SETDEX_BW;
+            break;
+        case "DPP":
+            setdex = SETDEX_DPP;
+            break;
+        default:
+            setdex = SETDEX_SM;
+    }
+    //Everyone has to update their tab to get new smogdex sets
+    updateTab(activeTab);
+});
+
 // handle team changes
 socket.on('update team', function(team, index) {
     currentTeam = team;

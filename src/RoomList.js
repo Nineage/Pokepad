@@ -63,6 +63,11 @@ module.exports = class RoomList {
         this.roomlist[room].updateChat(room, name, message);
     }
     
+    updateGen(room, newGen) {
+        if (!this.hasRoom(room)) return;
+        return this.roomlist[room].updateGen(newGen);
+    }
+    
      /**
      * getTeam
      * returns the team in a room
