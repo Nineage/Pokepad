@@ -4,7 +4,8 @@ var currentTeam = {};
 
 // helper function to scroll chat
 function autoScroll() {
-	$('#messages').scrollTop(Number.MAX_SAFE_INTEGER);
+    var elem = document.getElementById('messages');
+    elem.scrollTop = elem.scrollHeight;
 }
 
 // id function makes using Showdown data files simpler
@@ -26,16 +27,16 @@ function updatePokemon(pokeid, team, index) {
     if (Number(pokeid) > 796 && pokeid !== 802 && pokeid !== 803) idStr = "201";
     $('#mon-pic-' + (index + 1)).attr('src', 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png');
     $('#mon-select-' + (index + 1)).text(team.pokemon[index]);
-    
+
     $(".base-stat").each(function(elem) {
         $(this).text(pokedex[toId(team.pokemon[index])].baseStats[$(this).data("stat")]);
         calculateStatTotal($(this).data("stat"));
     });
 }
 
-/* 
+/*
 *
-* General Socket events 
+* General Socket events
 *
 */
 
@@ -59,10 +60,10 @@ socket.on('load chat', function(chat) {
 			$('#messages').append('<li class="server">' + chat[i][1] + '</li>');
 		} else {
 			$('#messages').append('<li><strong>' + chat[i][0] + ':</strong><span class="inline-message"> ' + chat[i][1] + '</span></li>');
-		}    
+		}
     }
     autoScroll();
-    
+
     if (localStorage.getItem("username") !== null) {
         socket.emit('name chosen', localStorage.getItem("username"));
         $("#nav-username").text(localStorage.getItem("username"));
@@ -73,12 +74,12 @@ socket.on('load chat', function(chat) {
 socket.on('load team', function(team) {
     // Store team object client-side
     currentTeam = team;
-    
+
     // Side Bar
     for (var i = 0; i < team.pokemon.length; i++) {
         updatePokemon(pokedex[toId(team.pokemon[i])].num, team, i);
     }
-    
+
     // Current Tab
     updateTab(activeTab);
 });
@@ -86,10 +87,10 @@ socket.on('load team', function(team) {
 socket.on('update pokemon', function(team, index) {
     // Store team object client-side
     currentTeam = team;
-    
+
     // Side Bar
     updatePokemon(pokedex[toId(team.pokemon[index])].num, team, index);
-    
+
     // Current Tab
     if (index === activeTab) updateTab(activeTab);
 });
