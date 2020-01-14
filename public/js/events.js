@@ -32,7 +32,7 @@ var nature = {
 	'Timid': ['spe', 'atk']
 };
 
-var setdex = SETDEX_SM;
+var setdex = SETDEX_SS;
 
 function packSet(moveset) {
 	if (!moveset || typeof moveset !== "string") return;

@@ -98,6 +98,9 @@ socket.on('update pokemon', function(team, index) {
 socket.on('update gen', function(team) {
     currentTeam = team;
     switch (currentTeam.gen) {
+        case "SM":
+            setdex = SETDEX_SM;
+            break;
         case "XY":
             setdex = SETDEX_XY;
             break;
@@ -108,7 +111,7 @@ socket.on('update gen', function(team) {
             setdex = SETDEX_DPP;
             break;
         default:
-            setdex = SETDEX_SM;
+            setdex = SETDEX_SS;
     }
     //Everyone has to update their tab to get new smogdex sets
     updateTab(activeTab);

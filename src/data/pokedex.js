@@ -1,4 +1,4 @@
-module.exports={
+module.exports = {
 	bulbasaur: {
 		num: 1,
 		species: "Bulbasaur",

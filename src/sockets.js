@@ -7,7 +7,7 @@
 const parser = require('./chat-parser');
 const randPoke = require('./data/randpoke.js');
 const labels = ["1st","2nd","3rd","4th","5th","6th"];
-const SUPPORTED_GENS = ["DPP", "BW", "XY", "SM"];
+const SUPPORTED_GENS = ["DPP", "BW", "XY", "SM", "SS"];
 
 var lastUpdate = [];
 
