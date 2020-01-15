@@ -22,10 +22,18 @@ function toId(text) {
 // helper function to update pokemon info
 function updatePokemon(pokeid, team, index) {
     var idStr = pokeid;
-    if (Number(pokeid) < 100) idStr = "0" + idStr;
-    if (Number(pokeid) < 10) idStr = "0" + idStr;
-    if (Number(pokeid) > 796 && pokeid !== 802 && pokeid !== 803) idStr = "201";
-    $('#mon-pic-' + (index + 1)).attr('src', 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png');
+    var srcStr = '';
+    if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
+        if (Number(pokeid) < 100) idStr = "0" + idStr;
+        if (Number(pokeid) < 10) idStr = "0" + idStr;
+        srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png'
+    } else if (Number(pokeid) <= 802) {
+        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png'
+    } else {
+        srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png'
+    }
+
+    $('#mon-pic-' + (index + 1)).attr('src', srcStr);
     $('#mon-select-' + (index + 1)).text(team.pokemon[index]);
 
     $(".base-stat").each(function(elem) {
