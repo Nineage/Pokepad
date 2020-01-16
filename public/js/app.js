@@ -26,23 +26,71 @@ function updatePokemon(pokeid, forme, team, index) {
     if (Number(pokeid) < 100) idStr = "0" + idStr;
     if (Number(pokeid) < 10) idStr = "0" + idStr;
 
-    if (forme == 'Alola') {
-        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_01.png';
-    } else if (forme == 'Galar' || forme == 'Galar-Zen') {
-        srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
-    /*} else if (forme == 'Gmax') {
-        srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-gigantamax.png';*/
-    } else if (forme == 'Mega-X' || forme == 'Mega-Y') {
-        idStr = idStr + '-mega'
-        if (forme == 'Mega-Y') idStr = idStr + '-y';
-        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
-    } else if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
-        if (forme == 'Mega') idStr = idStr + '-mega';
-        srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png';
-    } else if (Number(pokeid) <= 802) {
-        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
-    } else {
-        srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png';
+    switch (forme) {
+        case "Alola":
+        case "Primal":
+        case "Pom-Pom":
+        case "Attack":
+        case "Sandy":
+        case "Heat":
+        case "Origin":
+        case "Sky":
+        case "Therian":
+        case "White":
+        case "Resolute":
+        case "Pirouette":
+        case "Ash":
+        case "10%":
+        case "Unbound":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_01.png';
+            break;
+        case "Pa'u":
+        case "Defense":
+        case "Trash":
+        case "Wash":
+        case "Black":
+        case "Complete":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_02.png';
+            break;
+        case "Sensu":
+        case "Speed":
+        case "Frost":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_03.png';
+            break;
+        case "Fan":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_04.png';
+            break;
+        case "Mow":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_05.png';
+            break;
+        case "Galar":
+        case "Galar-Zen":
+            srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
+            break;
+        /*case "Gmax":
+            srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-gigantamax.png';
+            break;*/
+        case "Mega-X":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '-mega.png';
+            break;
+        case "Mega-Y":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '-mega-y.png';
+            break;
+        case "Plant":
+            if (Number(pokeid) == 412) srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/412.png';
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/413.png';
+            break;
+    }
+
+    if (srcStr == '') {
+        if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
+            if (forme == 'Mega') idStr = idStr + '-mega';
+            srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png';
+        } else if (Number(pokeid) <= 802) {
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
+        } else {
+            srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png';
+        }
     }
 
     $('#mon-pic-' + (index + 1)).attr('src', srcStr);
