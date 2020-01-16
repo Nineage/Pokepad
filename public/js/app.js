@@ -42,6 +42,7 @@ function updatePokemon(pokeid, forme, team, index) {
         case "Ash":
         case "10%":
         case "Unbound":
+        case "Blue-Striped":
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_01.png';
             break;
         case "Pa'u":
