@@ -20,17 +20,29 @@ function toId(text) {
 }
 
 // helper function to update pokemon info
-function updatePokemon(pokeid, team, index) {
+function updatePokemon(pokeid, forme, team, index) {
     var idStr = pokeid;
     var srcStr = '';
-    if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
-        if (Number(pokeid) < 100) idStr = "0" + idStr;
-        if (Number(pokeid) < 10) idStr = "0" + idStr;
-        srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png'
+    if (Number(pokeid) < 100) idStr = "0" + idStr;
+    if (Number(pokeid) < 10) idStr = "0" + idStr;
+
+    if (forme == 'Alola') {
+        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_01.png';
+    } else if (forme == 'Galar' || forme == 'Galar-Zen') {
+        srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
+    /*} else if (forme == 'Gmax') {
+        srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-gigantamax.png';*/
+    } else if (forme == 'Mega-X' || forme == 'Mega-Y') {
+        idStr = idStr + '-mega'
+        if (forme == 'Mega-Y') idStr = idStr + '-y';
+        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
+    } else if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
+        if (forme == 'Mega') idStr = idStr + '-mega';
+        srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png';
     } else if (Number(pokeid) <= 802) {
-        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png'
+        srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
     } else {
-        srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png'
+        srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png';
     }
 
     $('#mon-pic-' + (index + 1)).attr('src', srcStr);
@@ -85,7 +97,7 @@ socket.on('load team', function(team) {
 
     // Side Bar
     for (var i = 0; i < team.pokemon.length; i++) {
-        updatePokemon(pokedex[toId(team.pokemon[i])].num, team, i);
+        updatePokemon(pokedex[toId(team.pokemon[i])].num, pokedex[toId(team.pokemon[i])].forme, team, i);
     }
 
     // Current Tab
@@ -97,7 +109,7 @@ socket.on('update pokemon', function(team, index) {
     currentTeam = team;
 
     // Side Bar
-    updatePokemon(pokedex[toId(team.pokemon[index])].num, team, index);
+    updatePokemon(pokedex[toId(team.pokemon[index])].num, pokedex[toId(team.pokemon[index])].forme, team, index);
 
     // Current Tab
     if (index === activeTab) updateTab(activeTab);
