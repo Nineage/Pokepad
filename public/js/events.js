@@ -1,4 +1,4 @@
-/* 
+/*
 *
 * Event Handlers
 *
@@ -33,29 +33,30 @@ var nature = {
 };
 
 var setdex = SETDEX_SS;
+var teamGen = "SS";
 
 function packSet(moveset) {
 	if (!moveset || typeof moveset !== "string") return;
 	var data = moveset.split('\n');
 	if (!data.length) return;
-	
+
 	var result = {"pokemon": "", "item": "", "ability": "", "level": 100, "evs": {}, "ivs": {}, "nature": "Serious", "moves": ["","","",""]};
 	data[0] = data[0].split(' @ ');
 	result.pokemon = data[0][0].trim();
-	
+
 	if (data[0][1]) result.item = data[0][1].trim();
 	var moveIndex = 0;
-	
+
 	for (var i = 1; i < data.length; i++) {
 		if (~data[i].indexOf('Ability: ')) result.ability = data[i].substr(data[i].indexOf(" ")).trim();
 		if (~data[i].indexOf('Nature')) result.nature = data[i].substr(0, data[i].indexOf(" ")).trim();
 		if (~data[i].indexOf('Level: ')) result.level = data[i].substr(data[i].indexOf(" ")).trim();
-		
+
 		if (data[i][0] === '-') {
 			result.moves[moveIndex] = data[i].substr(data[i].indexOf(" ")).trim();
 			moveIndex++;
 		}
-		
+
 		if (~data[i].indexOf('EVs: ')) result.evs = packStats(data[i].substr(data[i].indexOf(" ")).trim());
 		if (~data[i].indexOf('IVs: ')) result.ivs = packStats(data[i].substr(data[i].indexOf(" ")).trim());
 	}
@@ -65,10 +66,10 @@ function packSet(moveset) {
 function packStats(valueString) {
 	var result = {};
 	var data = valueString.split(" / ");
-	
+
 	for (var i = 0; i < data.length; i++) {
 		var values = data[i].split(" ");
-		
+
 		if (typeof values[1] !== "string") return result;
 		result[values[1].toLowerCase()] = Number(values[0]);
 	}
@@ -85,22 +86,22 @@ function updateTab(tab) {
     $("#item-input").val(currentTeam.items[index]);
     $("#shiny-input").prop("checked", currentTeam.shinies[index]);
     $("#nature").val(currentTeam.natures[index]);
-    
+
     $(".base-stat").each(function(elem) {
         $(this).text(pokedex[toId(currentTeam.pokemon[index])].baseStats[$(this).data("stat")]);
         calculateStatTotal($(this).data("stat"));
     });
-    
+
     var mon = pokedex[toId(currentTeam.pokemon[index])].species;
     var sets;
-    
+
     try {
         sets = Object.keys(setdex[mon]);
     } catch (e) {
         sets = [];
     }
 
-    
+
      $('#smogdex-dropdown').html("<option value='custom'>Custom Set</option>")
     for (var i = 0; i < sets.length; i++) {
         $('#smogdex-dropdown').append($('<option>', {
@@ -108,10 +109,14 @@ function updateTab(tab) {
             text : sets[i]
         }));
     }
-    
+
     updateEVs(tab);
     updateIVs(tab);
     updateMoves(tab);
+
+
+	loadDataFile(pokedex, "species", "pokemon");
+    loadDataFile(items, "name", "item");
 };
 
 // update ev tab
@@ -119,7 +124,7 @@ function updateEVs(tab) {
     $(".evfield").each(function() {
         $(this).val(currentTeam.evs[tab][$(this).data("stat")]);
     });
-    
+
     $(".evslider").each(function() {
         $(this).val(currentTeam.evs[tab][$(this).data("stat")]);
     });
@@ -157,7 +162,7 @@ function calculateStatTotal(stat) {
         if (multiplier === 0) result = Math.floor(result * 1.1);
         if (multiplier === 1) result = Math.floor(result * 0.9);
     }
-    
+
     $("#total-" + stat).text(result);
 }
 
@@ -166,19 +171,19 @@ function getImportable() {
     var output = [];
     var data = [];
     var t = currentTeam; //assigned for concision
-    
+
     for (var i = 0; i < 6; i++) {
         output.push(t["pokemon"][i] + (t["items"][i].length ? " @ " + t["items"][i] : ""));
         output.push("Ability: " + t["abilities"][i]);
         if (t["levels"][i] !== 100) output.push("Level: " + t["levels"][i]);
         if (t["shinies"][i]) output.push("Shiny: Yes");
-        
+
         for (var j in t["evs"][i]) {
             if (t["evs"][i].hasOwnProperty(j) && t["evs"][i][j] !== 0) {
                 data.push(t["evs"][i][j] + " " + j);
             }
         }
-        
+
         if (data.length > 0) output.push("EVs: " + data.join(" / "));
         data = [];
         output.push(t["natures"][i] + " Nature");
@@ -201,11 +206,33 @@ function getImportable() {
 function loadDataFile(dataFile, value, id) {
     var data = [];
     var dex = Object.keys(dataFile);
-    
+
     for (var i = 0; i < dex.length; i++) {
+		if (id == "pokemon") {
+			var dexNo = dataFile[dex[i]]['num'];
+			var forme = dataFile[dex[i]]['forme'];
+	        if (dexNo > 494 && teamGen == "DPP") continue;
+			if (dexNo > 649 && teamGen == "BW") continue;
+			if (dexNo > 721 && teamGen == "XY") continue;
+			if (dexNo > 809 && teamGen == "SM") continue;
+			if (['Mega','Mega-X','Mega-Y'].includes(forme) && ['DPP','BW'].includes(teamGen)) continue;
+			if (forme == 'Alola' && ['DPP','BW','XY'].includes(teamGen)) continue;
+			if (['Gmax','Galar','Galar-Zen'].includes(forme) && teamGen !== "SS") continue;
+			if (forme == "Spiky-eared" && teamGen !== "DPP") continue;
+			if (forme == "Starter" && teamGen !== "SM") continue;
+			if (['Cosplay','Rock-Star','Belle','Pop-Star','PhD','Libre'].includes(forme) && teamGen !== "XY") continue;
+			if (dexNo == 25 && ['Original','Hoenn','Sinnoh','Unova','Kalos','Alola','Partner'].includes(forme) && ['DPP','BW','XY'].includes(teamGen)) continue;
+	    } else if (id == 'item') {
+			var itemGen = dataFile[dex[i]]['gen'];
+			if (itemGen > 4 && teamGen == 'DPP') continue;
+			if (itemGen > 5 && teamGen == 'BW') continue;
+			if (itemGen > 6 && teamGen == 'XY') continue;
+			if (itemGen > 7 && teamGen == 'SM') continue;
+		}
         data.push(dataFile[dex[i]][value]);
     }
-    $("." + id).typeahead({ source: data });    
+	$("." + id).typeahead("destroy");
+    $("." + id).typeahead({ source: data });
 }
 
 // Load data
@@ -213,12 +240,12 @@ $(document).ready(function() {
     var path = window.location.pathname;
     var room = path.substring(path.lastIndexOf('/') + 1);
     socket.emit('load', room);
-    
+
     loadDataFile(pokedex, "species", "pokemon");
     loadDataFile(items, "name", "item");
     loadDataFile(moveDex, "name", "move");
     loadDataFile(abilityDex, "name", "ability");
-    
+
     $('#padLink').text(room);
 });
 
@@ -232,7 +259,7 @@ $('#nameform').submit(function(e) {
 });
 
 $('#nav-username').click(function(e) {
-    
+
 });
 
 // Add Chat messages
@@ -248,7 +275,7 @@ $(".mon-select-button").click(function(e) {
     $(".mon-select-span").each(function() {
         $(this).removeClass("active");
     });
-    
+
     $(this).children().first().addClass("active");
     activeTab = Number($(this).data("tab-num"));
     updateTab(activeTab);
@@ -309,7 +336,7 @@ $(".evfield").change(function() {
     var stat = $(this).data("stat");
     $("#evslider-" + stat).val($(this).val());
     $("#evslider-" + stat).trigger('change');
-    
+
     socket.emit('team update', 'ev', activeTab, $(this).val(), {"stat": stat});
     calculateStatTotal(stat);
 })
@@ -318,7 +345,7 @@ $(".evfield").change(function() {
 $(".evslider").change(function() {
     var stat = $(this).data("stat");
     $("#stat-" + stat).val($(this).val());
-    
+
     socket.emit('team update', 'ev', activeTab, $(this).val(), {"stat": stat});
     calculateStatTotal(stat);
 })
@@ -365,13 +392,13 @@ $("#submit-import-btn").click(function() {
     var importSet = $("#import-set-area").val();
     var objectSet = packSet(importSet);
     if (objectSet) socket.emit('import set', activeTab, objectSet);
-    
+
     $("#import-set-area").val("");
     $("#pokeinfo-panel-view").toggleClass("hidden");
     $("#import-panel-view").toggleClass("hidden");
 });
 
-// Select a SmogDex Set 
+// Select a SmogDex Set
 $("#smogdex-dropdown").change(function() {
     let setName = $(this).val();
     let pokeName = $("#pokemon-input").val();

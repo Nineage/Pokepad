@@ -28,6 +28,10 @@ function updatePokemon(pokeid, forme, team, index) {
 
     switch (forme) {
         case "Alola":
+            if (Number(pokeid) == 25) break;
+        case "F":
+            if (Number(pokeid) == 876) srcStr = 'https://pldh.net/media/pokemon/sugimori/876-female.png';
+            if (Number(pokeid) == 876) break;
         case "Primal":
         case "Pom-Pom":
         case "Attack":
@@ -65,6 +69,8 @@ function updatePokemon(pokeid, forme, team, index) {
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_05.png';
             break;
         case "Galar":
+            if (Number(pokeid) == 79) srcStr = 'https://cdn.bulbagarden.net/upload/thumb/9/9f/079Slowpoke-Galar.png/600px-079Slowpoke-Galar.png';
+            if (Number(pokeid) == 79) break;
         case "Galar-Zen":
             srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
             break;
@@ -169,18 +175,23 @@ socket.on('update gen', function(team) {
     switch (currentTeam.gen) {
         case "SM":
             setdex = SETDEX_SM;
+            teamGen = "SM";
             break;
         case "XY":
             setdex = SETDEX_XY;
+            teamGen = "XY";
             break;
         case "BW":
             setdex = SETDEX_BW;
+            teamGen = "BW";
             break;
         case "DPP":
             setdex = SETDEX_DPP;
+            teamGen = "DPP";
             break;
         default:
             setdex = SETDEX_SS;
+            teamGen = "SS";
     }
     //Everyone has to update their tab to get new smogdex sets
     updateTab(activeTab);
