@@ -115,8 +115,10 @@ function updateTab(tab) {
     updateMoves(tab);
 
 
-	loadDataFile(pokedex, "species", "pokemon");
-    loadDataFile(items, "name", "item");
+	loadDataFile(pokedex, "species", "pokemon", tab);
+    loadDataFile(items, "name", "item", tab);
+    loadDataFile(learnsets, "name", "move", tab);
+    loadDataFile(pokedex, "name", "ability", tab);
 };
 
 // update ev tab
@@ -202,19 +204,73 @@ function getImportable() {
     return output.join("\n");
 }
 
+// get legal moves for a Pokemon (forme)
+function getMoves(moves_in, pokemon, learnsets) {
+	if (!learnsets[pokemon]) return moves_in;
+	var genNo = 8;
+	if (teamGen == "SM") genNo = 7;
+	if (teamGen == "XY") genNo = 6;
+	if (teamGen == "BW") genNo = 5;
+	if (teamGen == "DPP") genNo = 4;
+	var moves =  Object.keys(learnsets[pokemon]['learnset']);
+	var moves_out = moves_in;
+	for (var i = 0; i < moves.length; i++) {
+		if (moves_out.includes(moves[i])) continue;
+		var learnArray = learnsets[pokemon]['learnset'][moves[i]];
+		var learnMethod = learnArray[learnArray.length - 1];
+		if (Number(learnMethod[0]) <= genNo) moves_out.push(moves[i]);
+	}
+	return moves_out;
+}
+
 // load up datafiles
-function loadDataFile(dataFile, value, id) {
+function loadDataFile(dataFile, value, id, tab) {
     var data = [];
-    var dex = Object.keys(dataFile);
+    var dex = [];
+	var monName = currentTeam.pokemon ? toId(currentTeam.pokemon[tab]) : 'unown';
+	if (id == 'move') {
+		if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
+		if (pokedex[monName]['baseSpecies']) {
+			monName = toId(pokedex[monName]['baseSpecies']);
+			if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
+		}
+		if (pokedex[monName] && pokedex[monName]['prevo']) {
+			monName = pokedex[monName]['prevo'];
+			if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
+		}
+		if (pokedex[monName] && pokedex[monName]['prevo']) {
+			monName = pokedex[monName]['prevo'];
+			if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
+		}
+	} else if (id == 'ability') {
+		dex = Object.keys(dataFile[monName]['abilities']);
+		for (var i = 0; i < dex.length; i++) {
+			if (dex[i] == 'H' && teamGen == "DPP") continue;
+			data.push(dataFile[monName]['abilities'][dex[i]]);
+		}
+		if (['Mega','Mega-X','Mega-Y'].includes(pokedex[monName]['forme'])) {
+			monName = toId(pokedex[monName]['baseSpecies']);
+			dex = Object.keys(dataFile[monName]['abilities']);
+			for (var i = 0; i < dex.length; i++) {
+				if (dex[i] == 'H' && teamGen == "DPP") continue;
+				data.push(dataFile[monName]['abilities'][dex[i]]);
+			}
+		}
+		dex = [];
+	} else {
+		dex = Object.keys(dataFile);
+	}
 
     for (var i = 0; i < dex.length; i++) {
 		if (id == "pokemon") {
 			var dexNo = dataFile[dex[i]]['num'];
 			var forme = dataFile[dex[i]]['forme'];
+	        if (dexNo <= 0) continue;
 	        if (dexNo > 494 && teamGen == "DPP") continue;
 			if (dexNo > 649 && teamGen == "BW") continue;
 			if (dexNo > 721 && teamGen == "XY") continue;
 			if (dexNo > 809 && teamGen == "SM") continue;
+			if (['Totem','Busted','Busted-Totem'].includes(forme) && teamGen !== "SS") continue;
 			if (['Mega','Mega-X','Mega-Y'].includes(forme) && ['DPP','BW'].includes(teamGen)) continue;
 			if (forme == 'Alola' && ['DPP','BW','XY'].includes(teamGen)) continue;
 			if (['Gmax','Galar','Galar-Zen'].includes(forme) && teamGen !== "SS") continue;
@@ -222,15 +278,19 @@ function loadDataFile(dataFile, value, id) {
 			if (forme == "Starter" && teamGen !== "SM") continue;
 			if (['Cosplay','Rock-Star','Belle','Pop-Star','PhD','Libre'].includes(forme) && teamGen !== "XY") continue;
 			if (dexNo == 25 && ['Original','Hoenn','Sinnoh','Unova','Kalos','Alola','Partner'].includes(forme) && ['DPP','BW','XY'].includes(teamGen)) continue;
+	        data.push(dataFile[dex[i]][value]);
 	    } else if (id == 'item') {
 			var itemGen = dataFile[dex[i]]['gen'];
 			if (itemGen > 4 && teamGen == 'DPP') continue;
 			if (itemGen > 5 && teamGen == 'BW') continue;
 			if (itemGen > 6 && teamGen == 'XY') continue;
 			if (itemGen > 7 && teamGen == 'SM') continue;
-		}
-        data.push(dataFile[dex[i]][value]);
-    }
+	        data.push(dataFile[dex[i]][value]);
+		} else if (id == 'move') {
+			data.push(moveDex[dex[i]]['name']);
+    	}
+	}
+
 	$("." + id).typeahead("destroy");
     $("." + id).typeahead({ source: data });
 }
@@ -241,10 +301,10 @@ $(document).ready(function() {
     var room = path.substring(path.lastIndexOf('/') + 1);
     socket.emit('load', room);
 
-    loadDataFile(pokedex, "species", "pokemon");
-    loadDataFile(items, "name", "item");
-    loadDataFile(moveDex, "name", "move");
-    loadDataFile(abilityDex, "name", "ability");
+    loadDataFile(pokedex, "species", "pokemon", 0);
+    loadDataFile(items, "name", "item", 0);
+    loadDataFile(learnsets, "name", "move", 0);
+    loadDataFile(pokedex, "name", "ability", 0);
 
     $('#padLink').text(room);
 });
