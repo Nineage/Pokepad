@@ -28,10 +28,10 @@ function updatePokemon(pokeid, forme, team, index) {
 
     switch (forme) {
         case "Alola":
-            if (Number(pokeid) == 25) break;
+            if (Number(pokeid) === 25) break;
         case "F":
-            if (Number(pokeid) == 876) srcStr = 'https://pldh.net/media/pokemon/sugimori/876-female.png';
-            if (Number(pokeid) == 876) break;
+            if (Number(pokeid) === 876) srcStr = 'https://pldh.net/media/pokemon/sugimori/876-female.png';
+            if (Number(pokeid) === 876) break;
         case "Primal":
         case "Pom-Pom":
         case "Attack":
@@ -69,8 +69,8 @@ function updatePokemon(pokeid, forme, team, index) {
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_05.png';
             break;
         case "Galar":
-            if (Number(pokeid) == 79) srcStr = 'https://cdn.bulbagarden.net/upload/thumb/9/9f/079Slowpoke-Galar.png/600px-079Slowpoke-Galar.png';
-            if (Number(pokeid) == 79) break;
+            if (Number(pokeid) === 79) srcStr = 'https://cdn.bulbagarden.net/upload/thumb/9/9f/079Slowpoke-Galar.png/600px-079Slowpoke-Galar.png';
+            if (Number(pokeid) === 79) break;
         case "Galar-Zen":
             srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
             break;
@@ -84,14 +84,14 @@ function updatePokemon(pokeid, forme, team, index) {
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '-mega-y.png';
             break;
         case "Plant":
-            if (Number(pokeid) == 412) srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/412.png';
+            if (Number(pokeid) === 412) srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/412.png';
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/413.png';
             break;
     }
 
-    if (srcStr == '') {
-        if (Number(pokeid) <= 796 || pokeid == 802 || pokeid == 803) {
-            if (forme == 'Mega') idStr = idStr + '-mega';
+    if (srcStr === '') {
+        if (Number(pokeid) <= 796 || pokeid === 802 || pokeid === 803) {
+            if (forme === 'Mega') idStr = idStr + '-mega';
             srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png';
         } else if (Number(pokeid) <= 802) {
             srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';

@@ -11,7 +11,7 @@ const dex = require('./data/pokedex.js');
 /**
  * Room
  * Class representing a room.
- *      
+ *
  * @param {String} id
  * @param {String} viewid
  */
@@ -22,7 +22,7 @@ module.exports = class Room {
     	this.chat = [];
     	this.team = JSON.parse(JSON.stringify(defaultTeam));
 	}
-	
+
     /**
      * getId
      * getter for id
@@ -31,7 +31,7 @@ module.exports = class Room {
 	getId() {
 	    return this.id;
 	}
-	
+
 	/**
      * getViewId
      * getter for viewid
@@ -40,7 +40,7 @@ module.exports = class Room {
 	getViewId() {
 	    return this.viewid;
 	}
-	
+
     /**
      * getChat
      * getter for chat
@@ -49,27 +49,27 @@ module.exports = class Room {
 	getChat() {
 	    return this.chat;
 	}
-	
+
     /**
      * getTeam
      * getter for team
      * @return {object}
-     */	
+     */
 	getTeam() {
 	    return this.team;
 	}
-	
+
     /**
      * updateChat
      * Adds a new chat message to the chat list
      * @param {String} room
      * @param {String} name
      * @param {String} message
-     */	
+     */
      updateChat(room, name, message) {
 	    this.chat.push([name, message]);
 	}
-	
+
     /**
      * updateTeam
      * updates the passed value on the room
@@ -77,7 +77,7 @@ module.exports = class Room {
      * @param {int} index
      * @param {String} data
      * @param {int} data
-     */		
+     */
      updateTeam(element, index, data, innerIndex) {
      	if (element === "pokemon") {
      		this.team[element][index] = data;
@@ -94,12 +94,12 @@ module.exports = class Room {
 		}
 		return this.team;
 	}
-	
+
 	updateGen(newGen) {
 		this.team.gen = newGen;
 		return this.team;
 	}
-	
+
 	replaceSet(index, data) {
 		this.team["pokemon"][index] = data.pokemon;
 		this.team["items"][index] = data.item;
@@ -109,7 +109,7 @@ module.exports = class Room {
 		this.team["ivs"][index] = data.ivs;
 		this.team["natures"][index] = data.nature;
 		this.team["levels"][index] = data.level;
-		
+
 		return this.team;
 	}
 };

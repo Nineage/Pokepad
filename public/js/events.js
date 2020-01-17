@@ -208,10 +208,10 @@ function getImportable() {
 function getMoves(moves_in, pokemon, learnsets) {
 	if (!learnsets[pokemon]) return moves_in;
 	var genNo = 8;
-	if (teamGen == "SM") genNo = 7;
-	if (teamGen == "XY") genNo = 6;
-	if (teamGen == "BW") genNo = 5;
-	if (teamGen == "DPP") genNo = 4;
+	if (teamGen === "SM") genNo = 7;
+	if (teamGen === "XY") genNo = 6;
+	if (teamGen === "BW") genNo = 5;
+	if (teamGen === "DPP") genNo = 4;
 	var moves =  Object.keys(learnsets[pokemon]['learnset']);
 	var moves_out = moves_in;
 	for (var i = 0; i < moves.length; i++) {
@@ -228,7 +228,7 @@ function loadDataFile(dataFile, value, id, tab) {
     var data = [];
     var dex = [];
 	var monName = currentTeam.pokemon ? toId(currentTeam.pokemon[tab]) : 'unown';
-	if (id == 'move') {
+	if (id === 'move') {
 		if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
 		if (pokedex[monName]['baseSpecies']) {
 			monName = toId(pokedex[monName]['baseSpecies']);
@@ -242,17 +242,17 @@ function loadDataFile(dataFile, value, id, tab) {
 			monName = pokedex[monName]['prevo'];
 			if (dataFile[monName]) dex = getMoves(dex, monName, dataFile);
 		}
-	} else if (id == 'ability') {
+	} else if (id === 'ability') {
 		dex = Object.keys(dataFile[monName]['abilities']);
 		for (var i = 0; i < dex.length; i++) {
-			if (dex[i] == 'H' && teamGen == "DPP") continue;
+			if (dex[i] === 'H' && teamGen === "DPP") continue;
 			data.push(dataFile[monName]['abilities'][dex[i]]);
 		}
 		if (['Mega','Mega-X','Mega-Y'].includes(pokedex[monName]['forme'])) {
 			monName = toId(pokedex[monName]['baseSpecies']);
 			dex = Object.keys(dataFile[monName]['abilities']);
 			for (var i = 0; i < dex.length; i++) {
-				if (dex[i] == 'H' && teamGen == "DPP") continue;
+				if (dex[i] === 'H' && teamGen === "DPP") continue;
 				data.push(dataFile[monName]['abilities'][dex[i]]);
 			}
 		}
@@ -262,31 +262,31 @@ function loadDataFile(dataFile, value, id, tab) {
 	}
 
     for (var i = 0; i < dex.length; i++) {
-		if (id == "pokemon") {
+		if (id === "pokemon") {
 			var dexNo = dataFile[dex[i]]['num'];
 			var forme = dataFile[dex[i]]['forme'];
 	        if (dexNo <= 0) continue;
-	        if (dexNo > 494 && teamGen == "DPP") continue;
-			if (dexNo > 649 && teamGen == "BW") continue;
-			if (dexNo > 721 && teamGen == "XY") continue;
-			if (dexNo > 809 && teamGen == "SM") continue;
+	        if (dexNo > 494 && teamGen === "DPP") continue;
+			if (dexNo > 649 && teamGen === "BW") continue;
+			if (dexNo > 721 && teamGen === "XY") continue;
+			if (dexNo > 809 && teamGen === "SM") continue;
 			if (['Totem','Busted','Busted-Totem'].includes(forme) && teamGen !== "SS") continue;
 			if (['Mega','Mega-X','Mega-Y'].includes(forme) && ['DPP','BW'].includes(teamGen)) continue;
-			if (forme == 'Alola' && ['DPP','BW','XY'].includes(teamGen)) continue;
+			if (forme === 'Alola' && ['DPP','BW','XY'].includes(teamGen)) continue;
 			if (['Gmax','Galar','Galar-Zen'].includes(forme) && teamGen !== "SS") continue;
-			if (forme == "Spiky-eared" && teamGen !== "DPP") continue;
-			if (forme == "Starter" && teamGen !== "SM") continue;
+			if (forme === "Spiky-eared" && teamGen !== "DPP") continue;
+			if (forme === "Starter" && teamGen !== "SM") continue;
 			if (['Cosplay','Rock-Star','Belle','Pop-Star','PhD','Libre'].includes(forme) && teamGen !== "XY") continue;
-			if (dexNo == 25 && ['Original','Hoenn','Sinnoh','Unova','Kalos','Alola','Partner'].includes(forme) && ['DPP','BW','XY'].includes(teamGen)) continue;
+			if (dexNo === 25 && ['Original','Hoenn','Sinnoh','Unova','Kalos','Alola','Partner'].includes(forme) && ['DPP','BW','XY'].includes(teamGen)) continue;
 	        data.push(dataFile[dex[i]][value]);
-	    } else if (id == 'item') {
+	    } else if (id === 'item') {
 			var itemGen = dataFile[dex[i]]['gen'];
-			if (itemGen > 4 && teamGen == 'DPP') continue;
-			if (itemGen > 5 && teamGen == 'BW') continue;
-			if (itemGen > 6 && teamGen == 'XY') continue;
-			if (itemGen > 7 && teamGen == 'SM') continue;
+			if (itemGen > 4 && teamGen === 'DPP') continue;
+			if (itemGen > 5 && teamGen === 'BW') continue;
+			if (itemGen > 6 && teamGen === 'XY') continue;
+			if (itemGen > 7 && teamGen === 'SM') continue;
 	        data.push(dataFile[dex[i]][value]);
-		} else if (id == 'move') {
+		} else if (id === 'move') {
 			data.push(moveDex[dex[i]]['name']);
     	}
 	}
