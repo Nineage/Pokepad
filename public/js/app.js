@@ -20,12 +20,87 @@ function toId(text) {
 }
 
 // helper function to update pokemon info
-function updatePokemon(pokeid, team, index) {
+function updatePokemon(pokeid, forme, team, index) {
     var idStr = pokeid;
+    var srcStr = '';
     if (Number(pokeid) < 100) idStr = "0" + idStr;
     if (Number(pokeid) < 10) idStr = "0" + idStr;
-    if (Number(pokeid) > 796 && pokeid !== 802 && pokeid !== 803) idStr = "201";
-    $('#mon-pic-' + (index + 1)).attr('src', 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png');
+
+    switch (forme) {
+        case "Alola":
+            if (Number(pokeid) === 25) break;
+        case "F":
+            if (Number(pokeid) === 876) srcStr = 'https://pldh.net/media/pokemon/sugimori/876-female.png';
+            if (Number(pokeid) === 876) break;
+        case "Primal":
+        case "Pom-Pom":
+        case "Attack":
+        case "Sandy":
+        case "Heat":
+        case "Origin":
+        case "Sky":
+        case "Therian":
+        case "White":
+        case "Resolute":
+        case "Pirouette":
+        case "Ash":
+        case "10%":
+        case "Unbound":
+        case "Blue-Striped":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_01.png';
+            break;
+        case "Pa'u":
+        case "Defense":
+        case "Trash":
+        case "Wash":
+        case "Black":
+        case "Complete":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_02.png';
+            break;
+        case "Sensu":
+        case "Speed":
+        case "Frost":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_03.png';
+            break;
+        case "Fan":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_04.png';
+            break;
+        case "Mow":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '_05.png';
+            break;
+        case "Galar":
+            if (Number(pokeid) === 79) srcStr = 'https://cdn.bulbagarden.net/upload/thumb/9/9f/079Slowpoke-Galar.png/600px-079Slowpoke-Galar.png';
+            if (Number(pokeid) === 79) break;
+        case "Galar-Zen":
+            srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-galarian.png';
+            break;
+        /*case "Gmax":
+            srcStr = 'https://pldh.net/media/pokemon/ken_sugimori/update_swsh/' + idStr + '-gigantamax.png';
+            break;*/
+        case "Mega-X":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '-mega.png';
+            break;
+        case "Mega-Y":
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '-mega-y.png';
+            break;
+        case "Plant":
+            if (Number(pokeid) === 412) srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/412.png';
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/413.png';
+            break;
+    }
+
+    if (srcStr === '') {
+        if (Number(pokeid) <= 796 || pokeid === 802 || pokeid === 803) {
+            if (forme === 'Mega') idStr = idStr + '-mega';
+            srcStr = 'https://pldh.net/media/pokemon/shuffle/' + idStr + '.png';
+        } else if (Number(pokeid) <= 802) {
+            srcStr = 'https://www.pkparaiso.com/imagenes/shuffle/sprites/' + idStr + '.png';
+        } else {
+            srcStr = 'https://pldh.net/media/pokemon/sugimori/' + idStr + '.png';
+        }
+    }
+
+    $('#mon-pic-' + (index + 1)).attr('src', srcStr);
     $('#mon-select-' + (index + 1)).text(team.pokemon[index]);
 
     $(".base-stat").each(function(elem) {
@@ -77,7 +152,7 @@ socket.on('load team', function(team) {
 
     // Side Bar
     for (var i = 0; i < team.pokemon.length; i++) {
-        updatePokemon(pokedex[toId(team.pokemon[i])].num, team, i);
+        updatePokemon(pokedex[toId(team.pokemon[i])].num, pokedex[toId(team.pokemon[i])].forme, team, i);
     }
 
     // Current Tab
@@ -89,7 +164,7 @@ socket.on('update pokemon', function(team, index) {
     currentTeam = team;
 
     // Side Bar
-    updatePokemon(pokedex[toId(team.pokemon[index])].num, team, index);
+    updatePokemon(pokedex[toId(team.pokemon[index])].num, pokedex[toId(team.pokemon[index])].forme, team, index);
 
     // Current Tab
     if (index === activeTab) updateTab(activeTab);
@@ -98,17 +173,25 @@ socket.on('update pokemon', function(team, index) {
 socket.on('update gen', function(team) {
     currentTeam = team;
     switch (currentTeam.gen) {
+        case "SM":
+            setdex = SETDEX_SM;
+            teamGen = "SM";
+            break;
         case "XY":
             setdex = SETDEX_XY;
+            teamGen = "XY";
             break;
         case "BW":
             setdex = SETDEX_BW;
+            teamGen = "BW";
             break;
         case "DPP":
             setdex = SETDEX_DPP;
+            teamGen = "DPP";
             break;
         default:
-            setdex = SETDEX_SM;
+            setdex = SETDEX_SS;
+            teamGen = "SS";
     }
     //Everyone has to update their tab to get new smogdex sets
     updateTab(activeTab);
