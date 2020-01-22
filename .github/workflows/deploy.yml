@@ -2,19 +2,16 @@ name: Deploy
 
 on:
   push:
-    tags:
-    - '*'
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
-          with:
-            fetch-depth: 0
         - uses: akhileshns/heroku-deploy@master # This is the action
           with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
             heroku_app_name: "poke-pad"
             heroku_email: ${{secrets.HEROKU_EMAIL}}
-
