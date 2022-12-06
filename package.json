@@ -15,7 +15,7 @@
     "compression": "^1.7.0",
     "dem-feels": "^1.8.1",
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
+    "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "helmet": "^3.8.1",
     "http": "^0.0.0",
